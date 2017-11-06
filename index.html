@@ -181,7 +181,7 @@ cg00489772	0.41	0.503	...
                         <p>The row of family ID is optional. Please use the flag "--no-fid" if there is no family ID in your data.</p>
                          <pre ><code>osca --tefile mytprofile.txt --methylation-beta --make-bod --no-fid --out myprofile </code></pre>
                          
-<hr><h3 id="multithreadcomputing"  >Update .opi file</h3>
+<hr><h3 id="updateopi"  >Update .opi file</h3>
 <p>Probe information are sometimes not available in the original DNA methylation (or gene expression) data. These information can be updated the command below.</p>
                           <pre ><code>osca --befile myprofile --update-opi annotated.opi </code></pre>
                           
@@ -194,7 +194,7 @@ cg00489772	0.41	0.503	...
                                 <p><strong>--update-opi</strong> reads a fully annotated .opi file.</p>
                             </li>                            
                             </ul>
- <hr><h3 id="multithreadcomputing"  >Make a text format file</h3>
+ <hr><h3 id="mktext"  >Make a text format file</h3>
  <pre ><code>osca --befile myprofile --make-efile --out myprofile.txt </code></pre>
                            <ul>
                             <li>
@@ -207,7 +207,7 @@ cg00489772	0.41	0.503	...
                                 <p><strong>--make-tefile</strong> saves the DNA methylation (or gene expression) data in transposed text format.</p>
                             </li>                          
                             </ul>
- <hr><h3 id="multithreadcomputing"  >Make a subset of profile data</h3>
+ <hr><h3 id="mksub"  >Make a subset of profile data</h3>
  <p>To extract a probe</p>
                              <pre ><code>osca --befile myprofile --probe cg00000658 --make-bod --out mysubprofile </code></pre>
                             <ul>
@@ -310,7 +310,7 @@ EDEM2
                                 <p><strong>--to-probe-kb</strong> specifies the end physical position of the probes.</p>
                             </li>                           
                             </ul>
- <hr><h3 id="multithreadcomputing" >Merge binary files</h3>
+ <hr><h3 id="mergeb" >Merge binary files</h3>
  <pre ><code>osca --befile-flist mybod.flist --make-bod --out myprofile </code></pre>
                             <ul>
                             <li>
@@ -334,7 +334,7 @@ path2/my_bod2
                                 <p><strong>--beta2m</strong> calculates the methylation m value from the methylation beta value.</p>
                             </li>                          
                             </ul>
- <hr><h3 id="multithreadcomputing" >Calculate variance and mean</h3>
+ <hr><h3 id="calvarmean" >Calculate variance and mean</h3>
  <pre ><code>osca --befile myprofile --get-variance --get-mean --out newprofile </code></pre>
 							<ul>
                             <li>
@@ -352,7 +352,7 @@ cg00001349	0.00560701
                       <pre><code>cg00000957	0.901574
 cg00001349	0.860279
 ...                 </code></pre> 
- <hr><h3 id="multithreadcomputing" >Data trimming</h3>
+ <hr><h3 id="dt" >Data trimming</h3>
  <pre ><code>osca --befile myprofile --std 0.02 --make-bod --out newprofile </code></pre>
                             <ul>
                             <li>
@@ -368,7 +368,7 @@ cg00001349	0.860279
                                 <p><strong>--lower-beta</strong> removes the DNA methylation probes with the mean beta value smaller than a specified threshold.</p>
                             </li>                             
                             </ul>
- <hr><h3 id="multithreadcomputing" >Quality control with detection p-value</h3>
+ <hr><h3 id="qcdetp" >Quality control with detection p-value</h3>
   <pre ><code>osca --befile myprofile --detection-pval-file dpval.txt --dpval-mth 0  --dpval-thresh 0.05 --make-bod --out newprofile </code></pre>
                                 <ul>
                             <li>
@@ -391,18 +391,18 @@ cg00001349	0.860279
                             </li>                             
                             </ul>
                               <p>the file "dpval.txt" is in the same format with a transposed profile file. Option "--no-fid" is also valid here.</p>
- <hr><h3 id="multithreadcomputing" >Quality control with missing rate</h3>  
+ <hr><h3 id="qcmiss" >Quality control with missing rate</h3>  
   <pre ><code>osca --befile myprofile --missing-ratio-probe 0.01 --make-bod --out newprofile </code></pre>
                               <ul>
                              <li>
                                 <p><strong>--missing-ratio-probe</strong> specifies a missing proportion threshold to remove probes.</p>
                             </li>                             
                             </ul> 
- <hr><h3 id="multithreadcomputing" >Probe pruning</h3> 
+ <hr><h3 id="pp" >Probe pruning</h3> 
   <p style="color:red">To be updated....</p>
- <hr><h3 id="multithreadcomputing" > Probe clumping</h3>  
+ <hr><h3 id="pc" > Probe clumping</h3>  
   <p style="color:red">To be updated....</p>  
- <hr><h3 id="multithreadcomputing" > Estimation of probe correlation structure</h3>  
+ <hr><h3 id="ecs" > Estimation of probe correlation structure</h3>  
        <p style="color:red">To be updated....</p>
        
 <h2 id="greml">ORM</h2>
