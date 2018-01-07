@@ -46,12 +46,12 @@ Overview {#overviewexpand .expand}
 ### About
 
 **OSCA** (OmicS-data-based Complex trait Analysis) is a software tool
-written in C/C++ for the analysis of complex trait using multi-omics
+written in C/C++ for the analysis of complex traits using multi-omics
 data. It is developed by [Futao
 Zhang](http://researchers.uq.edu.au/researcher/12709), [Zhihong
 Zhu](http://researchers.uq.edu.au/researcher/3051) and [Jian
 Yang](http://researchers.uq.edu.au/researcher/2713) at Institute for
-Molecular Bioscience, the University of Queensland. Bug reports or
+Molecular Bioscience, The University of Queensland. Bug reports or
 questions: Jian Yang \<<jian.yang@uq.edu.au>\>.
 
 Functions currently supported are:
@@ -65,14 +65,14 @@ Functions currently supported are:
     probes.
 
 -   Mixed linear model based analysis to test for associations between
-    DNA methylation (or gene expression) probes and a complex trait.
+    DNA methylation (or gene expression) probes and complex traits.
 
 -   Estimating the joint "effects" of all methylation (transcription)
     probes on a phenotype (e.g. BMI) in a mixed linear model (analogous
     to BLUP). These estimated effects can be used to predict the
     phenotype in a new independent sample.
 
-**Note:** Although the software is designed for gene expression and DNA
+**Note:** Although this software tool is designed for gene expression and DNA
 methylation data, it can be applied to any other source of omics data
 including microbiome, proteome and brain connectome.
 
@@ -142,7 +142,7 @@ Data Management {#basicoptions .expand}
 ### Data Format {#inputandoutput}
 
 The DNA methylation (or gene expression) data are stored in a binary
-format for consistency and storage efficiency. We store the data in
+format for storage efficiency. We store the data in
 three separate files .oii (individual information, similar as a PLINK
 .fam file), .opi (probe information) and .bod (a binary file to store
 the DNA methylation or gene expression profiles).
