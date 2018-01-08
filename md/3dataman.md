@@ -460,7 +460,7 @@ This feasuer is memory efficent even to query with huge dense BESD file.
 To query the eQTL resutls for a single SNP, we could use this command
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --snp rs123 --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --snp rs123 --out myquery 
 ```
 
 **\--query** saves in text format a subset of the eQTL summary
@@ -480,28 +480,28 @@ rs01	1	1001	A	G	0.06	cg02	1	1201	gene2	-	0.043	0.007	8.1e-10
 To query the eQTL resutls excluding a single SNP, we could use this command
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --snp-rm rs123 --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --snp-rm rs123 --out myquery 
 ```
 **\--snp-rm** specifies a single SNP to exclude.
 
 To query the eQTL resutls extracting a subset of SNPs , we could use this command
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --extract-snp mysnp.list --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --extract-snp mysnp.list --out myquery 
 ```
 **\--extract-snp** extracts a subset of SNPs for analysis.
 
 To query the eQTL resutls excluding a subset of SNPs , we could use this command
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --exclude-snp mysnp.list --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --exclude-snp mysnp.list --out myquery 
 ```
 **\--exclude-snp** excludes a subset of SNPs from analysis.
 
 To query eQTL resutls for a range of SNPs in a genomic region
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --from-snp rs123 --to-snp rs456 --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --from-snp rs123 --to-snp rs456 --out myquery 
 ```
 
 **\--from-snp** specifies the start SNP.
@@ -513,7 +513,7 @@ smr --beqtl-summary myeqtl --query 5.0e-8 --from-snp rs123 --to-snp rs456 --out 
 To query eQTL results for all SNP on a chromosome
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --snp-chr 1 
+osca --beqtl-summary myeqtl --query 5.0e-8 --snp-chr 1 
 ```
 
 **\--snp-chr** specifies a chromosome to select SNPs.
@@ -524,7 +524,7 @@ there are *trans*-eQTLs.
 To query SNPs based on physical positions
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --snp-chr 1 --from-snp-kb 100 --to-snp-kb 200 --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --snp-chr 1 --from-snp-kb 100 --to-snp-kb 200 --out myquery 
 ```
 
 **\--from-snp-kb** specifies the start physical position of the
@@ -538,7 +538,7 @@ option) when using this option.
 To query based on a flanking region of a SNP
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --snp rs123 --snp-wind 50 --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --snp rs123 --snp-wind 50 --out myquery 
 ```
 
 **\--snp-wind** defines a window centred on a specified SNP.
@@ -548,7 +548,7 @@ smr --beqtl-summary myeqtl --query 5.0e-8 --snp rs123 --snp-wind 50 --out myquer
 To query based on a single probe
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --probe cg123 --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --probe cg123 --out myquery 
 ```
 
 **\--probe** specifies a single probe.
@@ -556,7 +556,7 @@ smr --beqtl-summary myeqtl --query 5.0e-8 --probe cg123 --out myquery
 To query excluding a single probe
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --probe-rm cg123 --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --probe-rm cg123 --out myquery 
 ```
 
 **\--probe-rm** specifies a single probe to exclude.
@@ -564,21 +564,21 @@ smr --beqtl-summary myeqtl --query 5.0e-8 --probe-rm cg123 --out myquery
 To query the eQTL resutls extracting a subset of probes , we could use this command
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --extract-probe myprobe.list --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --extract-probe myprobe.list --out myquery 
 ```
 **\--extract-probe** extracts a subset of probes for analysis.
 
 To query the eQTL resutls excluding a subset of probes , we could use this command
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --exclude-probe myprobe.list --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --exclude-probe myprobe.list --out myquery 
 ```
 **\--exclude-probe** excludes a subset of probes from analysis.
 
 To query based on a range of probes
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --from-probe cg123 --to-probe cg456 --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --from-probe cg123 --to-probe cg456 --out myquery 
 ```
 
 **\--from-probe** specifies the start probe.
@@ -590,7 +590,7 @@ NOTE : All probes should be on the same chromosome.
 To query based on a chromosome
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --probe-chr 1 
+osca --beqtl-summary myeqtl --query 5.0e-8 --probe-chr 1 
 ```
 
 **\--probe-chr** specifies a chromosome to select probes.
@@ -601,7 +601,7 @@ are *trans*-eQTLs.
 To query based on physical positions of the probes
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --probe-chr 1 --from-probe-kb 1000 --to-probe-kb 2000 --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --probe-chr 1 --from-probe-kb 1000 --to-probe-kb 2000 --out myquery 
 ```
 
 **\--from-probe-kb** specifies the start physical position of the
@@ -616,7 +616,7 @@ option) when using this option.
 To query based on a flanking region of a probe
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --probe cg123 --probe-wind 1000 --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --probe cg123 --probe-wind 1000 --out myquery 
 ```
 
 **\--probe-wind** defines a window centred on a specified probe.
@@ -624,7 +624,7 @@ smr --beqtl-summary myeqtl --query 5.0e-8 --probe cg123 --probe-wind 1000 --out 
 To query based on a gene
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --gene gene1 --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --gene gene1 --out myquery 
 ```
 
 **\--gene** specifies a single gene to select probes.
@@ -632,7 +632,7 @@ smr --beqtl-summary myeqtl --query 5.0e-8 --gene gene1 --out myquery
 #### \# Command line option for cis-region
 
 ```
-smr --beqtl-summary myeqtl --query 5.0e-8 --probe cg123 --cis-wind 2000 --out myquery 
+osca --beqtl-summary myeqtl --query 5.0e-8 --probe cg123 --cis-wind 2000 --out myquery 
 ```
 
 #### \# File-list options
@@ -640,19 +640,19 @@ smr --beqtl-summary myeqtl --query 5.0e-8 --probe cg123 --cis-wind 2000 --out my
 To query based on a list of SNPs
 
 ```
-smr --beqtl-summary myeqtl --extract-snp snp.list --query 5.0e-8 --out myquery 
+osca --beqtl-summary myeqtl --extract-snp snp.list --query 5.0e-8 --out myquery 
 ```
 
 To query based on a list of probes
 
 ```
-smr --beqtl-summary myeqtl --extract-probe probe.list --query 5.0e-8 --out myquery
+osca --beqtl-summary myeqtl --extract-probe probe.list --query 5.0e-8 --out myquery
 ```
 
 To qurey based on a list of genes
 
 ```
-smr --beqtl-summary myeqtl --genes gene.list --query 5.0e-8 --out myquery 
+osca --beqtl-summary myeqtl --genes gene.list --query 5.0e-8 --out myquery 
 ```
 
 **\--genes** extracts a subset of probes which tag the genes in the
@@ -673,12 +673,12 @@ All the data management options in [Query a BESD file](file:///Users/futao.zhang
 for example, To extract a subset of SNPs and/or probes
 
 ```
-smr --beqtl-summary myeqtl --extract-snp mysnp.list --extract-probe myprobe.list  --make-besd --out mybesd 
+osca --beqtl-summary myeqtl --extract-snp mysnp.list --extract-probe myprobe.list  --make-besd --out mybesd 
 ```
 #### \# tansform to SMR compatible format
 
 ```
-smr --beqtl-summary myeqtl --make-besd --to-smr --out mybesd 
+osca --beqtl-summary myeqtl --make-besd --to-smr --out mybesd 
 ```
 **\--to-smr** tranforms BESD file to SMR compatible format.
 
@@ -687,7 +687,7 @@ smr --beqtl-summary myeqtl --make-besd --to-smr --out mybesd
 To remove probes without any value across all the SNPs and SNPs without any value across all the probes.
 
 ```
-smr --beqtl-summary myeqtl --make-besd --besd-shrink --out mybesd 
+osca --beqtl-summary myeqtl --make-besd --besd-shrink --out mybesd 
 ```
 **\--besd-shrink** removes probes and SNPs that have no value.
 
