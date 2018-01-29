@@ -25,7 +25,7 @@ osca --befile myprofile --make-orm --orm-alg 1 --out myorm
 
 **\--orm-alg** specifies the algorithm to estimate the ORM. 1 for
 standardized data of each probe, 2 for centred data of each probe
-and 3 for standardized data of each individual. The default option
+and 3 for iteratively standardizing probes and individuals. The default option
 is 1.
 
 Note that although we describe the options above using DNA methylation

@@ -1,14 +1,14 @@
 
-## Meta Analysis {: .expand}
+## Meta-analysis {: .expand}
 
-### Meta (meta analysis in unrelated samples)
+### Meta-analysis for data without sample overlap
 
-#### \# meta for GWAS summary data
+#### \# Meta for GWAS summary data without sample overlap
 
 ```
 osca --gwas-flist mygwas.flist --meta --out mymeta
 ```
-**\--meta** implements the conventional inverse-variance-weighted meta-analysis assuming all the cohorts are independent. Pleae refer to [de Bakker PI et al.2008 Hum Mol Genet](https://academic.oup.com/hmg/article/17/R2/R122/2527210) for the details.
+**\--meta** implements the conventional inverse-variance-weighted meta-analysis meta-analysis assuming all the cohorts are independent. Pleae refer to [de Bakker PI et al.2008 Hum Mol Genet](https://academic.oup.com/hmg/article/17/R2/R122/2527210) for the details.
 
 **\--gwas-flist** reads a file to get file paths of the GWAS summary data.
 
@@ -20,7 +20,7 @@ Height.02.COJO
 Height.03.COJO
 ...                    
 ```
-This file has no headers. 
+This file has no header. 
 
 The input format of the GWAS summary data follows that for GCTA-COJO analysis (
 <http://cnsgenomics.com/software/gcta/#COJO>).
@@ -50,43 +50,25 @@ path2/my_besd2
 path3/my_besd3
 ...                   
 ```
-This file has no headers. The eQTL summary data should be in [BESD formta](#BESDformat).
+This file has no header. The eQTL summary data should be in [BESD formta](#BESDformat).
 
 ### MeCS (meta analysis in correlated sampels)
 
-#### \# MeCS for GWAS summary data
+#### \# MeCS for GWAS summary data with sample overlap
 
 ```
 osca --gwas-flist mygwas.flist --mecs --out mymecs
 ```
 **\--mecs** implements the MeCS analysis.
 
-specify a method to estimate the cohort correlation matrix.
+Specify the cohort correlation matrix
 
-```
-osca --gwas-flist mygwas.flist --mecs --mecs-mth 0 --out mymecs
-```
-**\--mecs-mth** specifies a method to estimate the cohort correlation matrix. 0 for computing the Pearson Correlaton Coefficient using the beta values and 1 for estimating the cohort correlation using the beta values of pairwised common SNPs. The default value is 0.
-
-use z-score to estimate the cohort correlation matrix.
-```
-osca --gwas-flist mygwas.flist --mecs --mecs-mth 0 --pcc-z --out mymecs
-```
-**\--pcc-z** indicates using z-score to compute the Pearson Correlaton Coefficiet matrix. The default value is false.
-
-specify a p-value threshold to exclude the significant SNPs from calculating the cohort correlation matrix.
-```
-osca --gwas-flist mygwas.flist --mecs --mecs-mth 0 --pmecs 0.01 --out mymecs
-```
-**\--pmecs** reads a p-value threshold to exclude the significant SNPs from calculating the cohort correlation matrix. The default value is 0.01. 
-
-input the cohort correlation matrix
 ```
 osca --gwas-flist mygwas.flist --mecs --cor-mat cor.mat --out mymecs
 ```
 **\--cor-mat** reads a p-value threshold to exclude the significant SNPs from calculation the cohort correlation matrix. The default value is 0.01. 
 
-***mybesd.flist***
+***cor.mat***
 ```
 1.000000000 0.03911566 0.001821693 0.021464142 0.017527909
 0.039115655 1.00000000 0.010180606 0.016671469 0.017503133
@@ -95,6 +77,21 @@ osca --gwas-flist mygwas.flist --mecs --cor-mat cor.mat --out mymecs
 0.017527909 0.01750313 0.004646767 0.034315463 1.000000000
 ```
 This file is a symmetric matrix without header.
+
+Use the z-scores instead of the beta values to estimate the cohort correlation matrix.
+
+```
+osca --gwas-flist mygwas.flist --mecs --mecs-mth 0 --pcc-z --out mymecs
+```
+**\--pcc-z** indicates using z-score to compute the Pearson Correlaton Coefficiet matrix. The default value is false.
+
+Specify a p-value threshold to exclude the significant SNPs from calculating the cohort correlation matrix.
+```
+osca --gwas-flist mygwas.flist --mecs --pmecs 0.01 --out mymecs
+```
+**\--pmecs** reads a p-value threshold to exclude the significant SNPs from calculating the cohort correlation matrix. The default value is 0.01. 
+
+
 
 #### \# MeCS for eQTL summary data
 
