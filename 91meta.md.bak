@@ -35,7 +35,7 @@ rs1003	A	C	0.5128	0.045	0.038	0.2319	129830
 ```
 Columns are SNP, the effect (coded) allele, the other allele, frequency of the effect allele, effect size, standard error, p-value and sample size. The headers are not keywords and will be omitted by the program. <font color='red'>Important: “A1” needs to be the effect allele with “A2” being the other allele and “freq” needs to be the frequency of “A1”</font>. **NOTE: For a case-control study, the effect size should be log(odds ratio) with its corresponding standard error**.
 
-#### \# Meta for eQTL summary data
+#### \# meta for eQTL summary data
 
 ```
 osca --besd-flist mybesd.flist --meta --out mymeta
@@ -53,6 +53,45 @@ path3/my_besd3
 This file has no header. The eQTL summary data should be in [BESD formta](#BESDformat).
 
 ### MeCS (meta analysis in correlated sampels)
+
+#### \# MeCS for GWAS summary data with sample overlap
+
+```
+osca --gwas-flist mygwas.flist --mecs --out mymecs
+```
+**\--mecs** implements the MeCS analysis.
+
+Specify the cohort correlation matrix
+
+```
+osca --gwas-flist mygwas.flist --mecs --cor-mat cor.mat --out mymecs
+```
+**\--cor-mat** reads a file to get the cohort correlation matrix.
+
+***cor.mat***
+```
+1.000000000 0.03911566 0.001821693 0.021464142 0.017527909
+0.039115655 1.00000000 0.010180606 0.016671469 0.017503133
+0.001821693 0.01018061 1.000000000 0.001058645 0.004646767
+0.021464142 0.01667147 0.001058645 1.000000000 0.034315463
+0.017527909 0.01750313 0.004646767 0.034315463 1.000000000
+```
+This file is a symmetric matrix without header.
+
+Use the z-scores instead of the beta values to estimate the cohort correlation matrix.
+
+```
+osca --gwas-flist mygwas.flist --mecs --mecs-mth 0 --pcc-z --out mymecs
+```
+**\--pcc-z** indicates using z-score to compute the Pearson Correlaton Coefficiet matrix. The default value is false.
+
+Specify a p-value threshold to exclude the significant SNPs from calculating the cohort correlation matrix.
+```
+osca --gwas-flist mygwas.flist --mecs --pmecs 0.01 --out mymecs
+```
+**\--pmecs** reads a p-value threshold to exclude the significant SNPs from calculating the cohort correlation matrix. The default value is 0.01. 
+
+
 
 #### \# MeCS for eQTL summary data
 

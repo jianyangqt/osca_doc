@@ -3,7 +3,7 @@
 
 This is a module in OSCA to perform a standard eQTL mapping analysis. We describe the module for eQTL mapping but it can be applied to genetic association analysis for all kinds of molecular traits (e.g. DNA methylation, histone modification, metabolites and Microbiome)
 
-#### \# basic option 
+#### \# Basic option 
 
 ```
 osca --eqtl --bfile mydata --befile myprofile --out myeqtl
