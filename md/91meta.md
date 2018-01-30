@@ -52,7 +52,7 @@ path3/my_besd3
 ```
 This file has no header. The eQTL summary data should be in [BESD formta](#BESDformat).
 
-### MeCS (meta analysis in correlated sampels)
+### MeCS (meta analysis in correlated samples)
 
 #### \# MeCS for eQTL summary data
 
