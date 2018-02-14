@@ -1,6 +1,6 @@
 
 ## Download {: .expand}
-### Executable Files (version 0.38) 
+### Executable Files (version 0.39) 
 
 The Linux version is available at:
 [osca\_Linux.zip](./download/osca_Linux.zip).
@@ -20,4 +20,6 @@ The executable files (binary code) are release under MIT lincense.
 
 **1.**  21 July, 2017: first release.
 
-**2.**  8 January, 2018: added meta analysis, eQTL analysis and vQTL analysis.
+**2.**  Version 0.38 (8 January, 2018): added meta analysis, eQTL analysis.
+
+**3.**  Version 0.39 (14 February, 2018): added solution(s) if the MLM based methods do not work with EWAS.

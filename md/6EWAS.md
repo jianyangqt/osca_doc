@@ -28,6 +28,26 @@ Chr    Probe   bp  Gene    Orientation b   se  p
 This is a text file with headers. Columns are chromosome, probe, probe
 BP, gene, orientation, effect size, standard error and p-value.
 
+**NOTE:** Sometimes MLM methods don't work especially when the sample size is pretty small. 
+In such case we switch MLMA to standard PC based linear regression. 
+We implemented a strategy to identify the number of PCs until the lambda falls into the region of [1-lambda\_window, 1+lambda\_window], 
+or the number touches the lower bound (0) or the upper bound (half of the sample size).
+The lambda window can be specified by an option **\--lambda-wind**
+
+```
+osca --mlma --befile myprofile --pheno my.phen --orm myorm --lambda-wind 0.05 --out my
+```
+**\--lambda-wind** specifies a lambda window. The default value is 0.05. This option only works when MLM methods fail.
+
+
+**NOTE:** The computing process gets slower as the number of covariate gets larger. The option **\--fast-linear** can help to accelerate the computing without losing too much accurary if there are not too many missing values in the DNA methylation / gene expression profiles.
+
+
+```
+osca --mlma --befile myprofile --pheno my.phen --orm myorm --fast-linear --out my
+```
+**\--fast-linear** initiate fast linear regression. This flag can aslo be used in [Linear Regression](#LinearRegression)
+```
 ```
 osca --mlma-loco --befile myprofile --pheno my.phen --out my
 ```
