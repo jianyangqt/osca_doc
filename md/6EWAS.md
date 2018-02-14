@@ -40,7 +40,7 @@ osca --mlma --befile myprofile --pheno my.phen --orm myorm --lambda-wind 0.05 --
 **\--lambda-wind** specifies a lambda window. The default value is 0.05. This option only works when MLM methods fail.
 
 
-**NOTE:** The computing process gets slower as the number of covariate gets larger. The option **\--fast-linear** can help to accelerate the computing without losing too much accurary if there are not too many missing values in the DNA methylation / gene expression profiles.
+**NOTE:** The computing process gets slower as the number of covariate gets larger. The option **\--fast-linear** can help to accelerate the computing without losing too much accuracy if there are not too many missing values in the DNA methylation / gene expression profiles.
 
 
 ```
