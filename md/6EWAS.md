@@ -47,7 +47,7 @@ osca --mlma --befile myprofile --pheno my.phen --orm myorm --lambda-wind 0.05 --
 osca --mlma --befile myprofile --pheno my.phen --orm myorm --fast-linear --out my
 ```
 **\--fast-linear** initiate fast linear regression. This flag can aslo be used in [Linear Regression](#LinearRegression)
-```
+
 ```
 osca --mlma-loco --befile myprofile --pheno my.phen --out my
 ```
