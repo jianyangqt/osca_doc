@@ -28,45 +28,20 @@ Chr    Probe   bp  Gene    Orientation b   se  p
 This is a text file with headers. Columns are chromosome, probe, probe
 BP, gene, orientation, effect size, standard error and p-value.
 
-**NOTE:** Sometimes MLM methods don't work especially when the sample size is pretty small. 
-In such case we switch MLMA to standard PC based linear regression. 
-We implemented a strategy to identify the number of PCs until the lambda falls into the region of [1-lambda\_window, 1+lambda\_window], 
-or the number touches the lower bound (0) or the upper bound (half of the sample size).
-The lambda window can be specified by an option **\--lambda-wind**
+**NOTE:** Sometimes the MLM estimation process in the EWAS analysis does not work (the REML iteration cannot converge or an estimate hits the boundaries of parameter space) especially when the sample size is small. In such case we switch MLMA to standard PC based linear regression analysis. We have implemented a strategy to identify the number of PCs iteratively until the genomic inflation factor (lambda value) falls into a user-defined window, or the number of PCs reaches the lower (0) or upper boundary (half of the sample size). The window size for lambda can be specified by the option **\--lambda-wind**
 
 ```
 osca --mlma --befile myprofile --pheno my.phen --orm myorm --lambda-wind 0.05 --out my
 ```
-**\--lambda-wind** specifies a lambda window. The default value is 0.05. This option only works when MLM methods fail.
+**\--lambda-wind** specifies a window for the lambda value. The default value is 0.05. This option only works when the MLM estimation process fails.
 
 
-**NOTE:** The computing process gets slower as the number of covariate gets larger. The option **\--fast-linear** can help to accelerate the computing without losing too much accuracy if there are not too many missing values in the DNA methylation / gene expression profiles.
-
+**NOTE:** The analysis becomes slower as the number of PCs becomes larger. The option **\--fast-linear** can accelerate the analysis by pre-adjusting both the trait and gene expression (or DNA methylation) value by the PCs. In this case, all the missing gene expression (or DNA methylation) values will be replaced by the mean. It should be noted that if the proportion of missing values in the gene expression (or DNA methylation) data is large, this accelerated analysis may lead to differences in results.
 
 ```
 osca --mlma --befile myprofile --pheno my.phen --orm myorm --fast-linear --out my
 ```
-**\--fast-linear** initiate fast linear regression. This flag can aslo be used in [Linear Regression](#LinearRegression)
-
-```
-osca --mlma-loco --befile myprofile --pheno my.phen --out my
-```
-**\--mlma-loco** initiates an MLM based association analysis with
-the chromosome where the target probe is located excluded from the
-ORM. The results will be saved in a plain text file with
-**.loco.mlma** as the filename extension.
-
-```
-osca --mlma --lxpo 0.1 --befile myprofile --pheno my.phen --out my
-```
-```
-osca --mlma-loco --lxpo 0.1 --befile myprofile --pheno my.phen --out my
-```
-**\--lxpo** specifies a percentage of probes to exclude from
-calculating the ORM. This option should accompany **\--mlma** or
-**\--mlma-loco**. It will first conduct a linear-regression-based
-association analysis and then excludes a percentage of top
-associated probes from the ORM.
+**\--fast-linear** runs a fast linear regression analysis if MLMA fails. This flag can also be used in the [Linear Regression analysis module](#LinearRegression)
 
 ### Linear Regression
 

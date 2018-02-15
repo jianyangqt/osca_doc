@@ -22,4 +22,4 @@ The executable files (binary code) are release under MIT lincense.
 
 **2.**  Version 0.38 (8 January, 2018): added meta analysis, eQTL analysis.
 
-**3.**  Version 0.39 (14 February, 2018): added solution(s) if the MLM based methods do not work with EWAS.
+**3.**  Version 0.39 (14 February, 2018): added a solution if the MLM estimation process in EWAS analysis does not work.
