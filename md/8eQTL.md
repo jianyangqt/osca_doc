@@ -47,9 +47,8 @@ osca --eqtl --bfile mydata --befile myprofile --covar mycovar --qcovar myqcovar 
 
 #### \# Fast eQTL analysis
 
-The options above fit the covariates in the model as y=xb+C&beta;+e. This is equivalent to y<sup>'</sup>=y-C&beta;<sup>^</sup>, x<sup>'</sup>=x-C&beta;<sup>^</sup>, y<sup>'</sup>=x<sup>'</sup>b. This equivalent transformation avoids the repeated computing of the inverse of a (p +1)*(p + 1) matrix where p is the number of covariates.
 
 ```
 osca --eqtl --bfile mydata --befile myprofile --fast-eqtl --task-total 1000 --task-id 1 --thread-num 10 --out myeqtl
 ```
-**\--fast-eqtl** runs the fast eQTL analysis.
+**\--fast-eqtl** runs the fast eQTL analysis. This flag can also be used in the [Linear Regression analysis module](#FastLinearRegression)

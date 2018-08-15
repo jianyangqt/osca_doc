@@ -16,9 +16,9 @@ Functions currently supported are:
 
 -   Estimating the joint "effects" of all methylation (transcription) probes on a phenotype (e.g. BMI) in a mixed linear model (analogous to BLUP). These estimated effects can be used to predict the phenotype in a new independent sample.
 
--   eQTL/mQTL analysis with linear regression model. The model can adjust for the relevant covarites. The results are saved in [SMR dense BESD format](http://cnsgenomics.com/software/smr/#DataManagement).
+-   eQTL/mQTL analysis with linear regression model. The model can adjust for the relevant covarites. The results are saved in [SMR BESD format](http://cnsgenomics.com/software/smr/#DataManagement).
 
--   vQTL analysis to test the homogeneity of variance. Three algorithms have been implemented (Bartlett’s test, Levene’s test and Brown–Forsythe test, Fligner-Killeen test). The results are saved in [SMR dense BESD format](http://cnsgenomics.com/software/smr/#DataManagement).
+-   vQTL analysis to test the homogeneity of variance. Three algorithms have been implemented (Bartlett’s test, Levene’s test and Brown–Forsythe test, Fligner-Killeen test). The results are saved in [SMR BESD format](http://cnsgenomics.com/software/smr/#DataManagement).
 
 **Note:** Although this software tool is designed for gene expression and DNA methylation data, it can be applied to any other source of omics data including microbiome, proteome and brain connectome.
 

@@ -303,10 +303,10 @@ path2/my_bod2
 To remvoe probes with low variance
 
 ```
-osca --befile myprofile --std 0.02 --make-bod --out newprofile 
+osca --befile myprofile --sd-min 0.02 --make-bod --out newprofile 
 ```
 
-**\--std** removes the probes with the standard deviation smaller
+**\--sd-min** removes the probes with the standard deviation smaller
 than a specified threshold.
 
 To remove probes with a missing rate threshold
@@ -369,6 +369,18 @@ file. Option "**\--no-fid**" is also valid here.
 osca --befile myprofile --covar my.cov --qcovar my.qcov --adj-probe --make-bod --out newprofile 
 ```
 **\--adj-probe** adjusts the covariates for each probe.
+
+#### \# standardize each probe
+```
+osca --befile myprofile --std-probe --make-bod --out newprofile 
+```
+**\--std-probe** standardizes each probe.
+
+```
+osca --befile myprofile --rint-probe --make-bod --out newprofile 
+```
+**\--rint-probe** normalizes each probe by Rank-based Inverse Normal Transformation.
+
 
 #### \# other options
 Transform methylation beta value to methylation m value and vice versa
@@ -435,21 +447,17 @@ cg00001349  0.860279
 
 ### BESD format
 
-For the detail information please refer to [SMR BESD format](http://cnsgenomics.com/software/smr/#BESDformat).
-To efficiently save the eQTL / v QTL result, we extended the BESD format.
+Results from eQTL analysis will be saved in SMR BESD format [see SMR website for more information](http://cnsgenomics.com/software/smr/#BESDformat).To save the eQTL results more efficiently, we extended the BESD format.
 
-**Note:** The text below are for advanced users only. 
+**Note:** The texts below are for advanced users only. 
 
-We use the first 4 bytes of the .besd file to store the descriptive information for the
-data. 
 
-**BESD dense format 1** (OSCA and SMR supported): the descriptive information is 0x00000000 and the data onwards is a vector of beta values followed by a vector of SE values of each probe across all the snps. The beta and se values are saved as float-precision (4B).
+**BESD dense format 1**: the first 64 Bytes are reserved for the descriptive information which starts with 0x00000005. The data onwards are a vector of effect sizes followed by a vector of SEs of each probe across all the snps. The effect sizes and SEs are saved in single float-precision (4B).
 
-**BESD dense format 2** (OSCA supported): the descriptive information is 0x00000004 and the data onwards is the beta value followed by the SE value of each SNP across all the probes. The beta and se values are saved as float-precision (4B).
+**BESD dense format 2** (only supported in OSCA): the first 64 Bytes are reserved for the descriptive information which starts with 0x00000004. The data onwards are the effect sizes followed by the SEs of each SNP across all the probes. The effect sizes and SEs are saved in single float-precision (4B).
 
-**BESD sparse format 1** (OSCA and SMR supported): the descriptive information is 0x40400000. The beta values and the SE values as saved in [the CSC format](https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_column_(CSC_or_CCS))
+**BESD sparse format**:  the first 64 Bytes are reserved for the descriptive information which starts with 0x00000001. The effect sizes and the SEs as saved in [the CSC format](https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_column_(CSC_or_CCS))
 
-**BESD sparse format 2** (OSCA supported): the descriptive information is 0x00000003. The beta values and the SE values as saved in the CSC format with removing the redundant information. 
 
 ### Query a BESD file 
 
