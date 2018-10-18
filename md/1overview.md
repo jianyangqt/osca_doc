@@ -33,8 +33,7 @@ Bug reports or questions to Jian Yang (<jian.yang@uq.edu.au>) at
 Institute for Molecular Bioscience, The University of Queensland.
 
 
-### Citations 
+### Citation 
 
-**EWAS method:**
 Zhang F, Chen W, Zhu Z, Zhang Q, Deary IJ, Wray NR, Visscher PM, McRae AF, Yang J (2018) OSCA: a tool for omic-data-based complex trait analysis. [bioRxiv 445163; doi: https://doi.org/10.1101/445163](https://www.biorxiv.org/content/early/2018/10/17/445163).
 
