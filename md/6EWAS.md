@@ -40,21 +40,21 @@ osca --moment --befile myprofile --pheno my.phen --lambda-range 0.05 --out my
 ```
 osca --moment --befile myprofile --pheno my.phen --fast-linear --out my
 ```
-**\--fast-linear** runs a fast linear regression analysis if MLMA fails. This flag can also be used in the [Fast Linear Regression analysis module](#FastLinearRegression)
+**\--fast-linear** runs a fast linear regression analysis. This flag can also be used in the [Fast Linear Regression analysis module](#FastLinearRegression)
 
 
-### MLMA (MLM-based Association)
+### MOA (MLM-based Omic Association)
 
 ```
-osca --mlma --befile myprofile --pheno my.phen --out my
+osca --moa --befile myprofile --pheno my.phen --out my
 ```
 
 If you have already computed the ORM
 
 ```
-osca --mlma --befile myprofile --pheno my.phen --orm myorm --out my
+osca --moa --befile myprofile --pheno my.phen --orm myorm --out my
 ```
-**\--mlma** initiates an MLM based association analysis including
+**\--moa** initiates an MLM based association analysis including
 the target probe (the probe to be tested for association) in the
 ORM. The results will be saved in a plain text file with **.mlma**
 as the filename extension.
