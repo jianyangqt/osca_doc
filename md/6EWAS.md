@@ -100,7 +100,7 @@ osca --befile myprofile --pheno my.phen --logistic --out my
 ```
 osca --befile myprofile --pheno my.phen --qcovar my.qcovar --covar my.covar --logistic --out my
 ```
-**\--logistic** saves logistic regression statistics to a plain text file.
+**\--logistic** outputs logistic regression analysis result to a plain text file.
 
 ***my.logistic***
 
@@ -116,7 +116,7 @@ This is a text file with headers. Columns are chromosome, probe, probe
 BP, gene, orientation, odd ratio, standard error, p-value and number of non-missing
 individuals.
 
-**NOTE:** Characters, strings, and numbers all can be accepted as the phenotype values in logistic regression, but only "NA" and "na" are interpreted as missing.
+**NOTE:** It is allowed to use characters, strings, or numbers as phenotype values in logistic regression but "NA" or "na" will be recognised as a missing value.
 
 ### EWAS simulation
 
