@@ -92,6 +92,32 @@ osca --linear --befile myprofile --pheno my.phen --qcovar my.qcovar --covar my.c
 ```
 **\--fast-linear**  runs a fast linear regression analysis.
 
+### Logistic Regression
+
+```
+osca --befile myprofile --pheno my.phen --logistic --out my
+```
+```
+osca --befile myprofile --pheno my.phen --qcovar my.qcovar --covar my.covar --logistic --out my
+```
+**\--logistic** saves logistic regression statistics to a plain text file.
+
+***my.logistic***
+
+```
+probeChr   ProbeID Probe_bp Gene    Orientation   OR    SE  P   NMISS
+1	cg00297950	110282525	GSTM3	-	0.010953	1.30438	5.386424e-04	1318
+1	cg00299820	11943154	NPPB	-	0.0085006	2.77659	8.596523e-02	1318
+1	cg00305285	1017115	RNF223	-	8.22097	2.99934	4.824397e-01	1318
+...                    
+```
+
+This is a text file with headers. Columns are chromosome, probe, probe
+BP, gene, orientation, odd ratio, standard error, p-value and number of non-missing
+individuals.
+
+**NOTE:** Characters, strings, and numbers all can be accepted as the phenotype values in logistic regression, but only "NA" and "na" are interpreted as missing.
+
 ### EWAS simulation
 
 The phenotypes are simulated based on a set of real DNA methylation (or
