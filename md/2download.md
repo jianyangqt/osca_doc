@@ -1,6 +1,6 @@
 
 ## Download {: .expand}
-### Executable Files (version 0.41) 
+### Executable Files (version 0.42) 
 
 The Linux version is available at:
 [osca\_Linux.zip](./download/osca_Linux.zip).
@@ -27,3 +27,6 @@ The executable files (binary code) are release under MIT lincense.
 **4.**  Version 0.40 (14 August, 2018): added a new method called MOMENT for EWAS analysis and some functions for Data Management.
 
 **5.**  Version 0.41 (22 October, 2018): added logistic regression in EWAS analysis.
+
+**6.**  Version 0.42 (29 November, 2018): added an efficient function to run a mixed-linear-model-based cis-eQTL analysis.
+
