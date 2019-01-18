@@ -1,8 +1,8 @@
 
 ## EWAS {: .expand}
 
-### MOMENT (Multi-cOmponent Mlm-based association ExcludiNg the Target)
-
+### MOMENT
+#### \# MOMENT (Multi-cOmponent Mlm-based association ExcludiNg the Target)
 ```
 osca --moment --befile myprofile --pheno my.phen --out my
 ```
@@ -43,8 +43,8 @@ osca --moment --befile myprofile --pheno my.phen --fast-linear --out my
 **\--fast-linear** runs a fast linear regression analysis. This flag can also be used in the [Fast Linear Regression analysis module](#FastLinearRegression)
 
 
-### MOA (MLM-based Omic Association)
-
+### MOA
+#### \# MOA (MLM-based Omic Association)
 ```
 osca --moa --befile myprofile --pheno my.phen --out my
 ```

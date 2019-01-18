@@ -7,7 +7,7 @@ three separate files .oii (individual information, similar as a PLINK
 .fam file), .opi (probe information) and .bod (a binary file to store
 the DNA methylation or gene expression profiles).
 
-To efficiently save the result of eQTL / vQTL analysis, OSCA also supports SMR BESD format.
+To efficiently save the result of eQTL / vQTL analysis, OSCA also supports BESD format.
 
 ### BOD format
 

@@ -1,0 +1,1380 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>OSCA</title>
+    <link type="text/css" rel="stylesheet" href="./static/css/jquery.tocify.css">
+    <link type="text/css" rel="stylesheet" href="./static/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="./static/css/solarized-light.css">
+    <link type="text/css" rel="stylesheet" href="./static/css/main.css">
+    <script src="./static/js/jquery-1.12.4.min.js"></script>
+    <script src="./static/js/jquery-ui.min.js"></script>
+    <script src="./static/js/jquery.tocify.js"></script>
+    <script src="./static/js/hljs.js"></script>
+</head>
+<body>
+    <div class="page-header" id="PAGE-header" style="height:auto;padding:0">
+        <div class="container-fluid">
+            <p class="TOP_head">&nbsp;</p>
+            <div class="span5">
+                <h1>&nbsp;OSCA</h1>
+                <p class="TOP_head">OmicS-data-based Complex trait Analysis</p>
+            </div>
+            <div class="span7">
+                <ul class="nav nav-pills" style="margin:0">
+                    <li role="presentation"><a href="http://cnsgenomics.com/software/gcta/">GCTA</a></li>
+                    <li role="presentation"><a href="http://cnsgenomics.com/software/smr/">SMR</a></li>
+                    <li role="presentation"><a href="http://cnsgenomics.com/software/gsmr/">GSMR</a></li>
+                    <li role="presentation" class="active"><a href="http://cnsgenomics.com/software/osca/">OSCA</a></li>
+                    <li role="presentation"><a href="http://cnsgenomics.com/software/gctb/">GCTB</a></li>
+                    <li role="presentation"><a href="http://cnsgenomics.com/software.html">Program in PCTG</a></li>
+                    <li role="presentation"><a href="http://gcta.freeforums.net/">CTG forum</a></li>
+                </ul>
+            </div>
+       </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div id="toc"></div>
+                <!--[if lt IE 9]>
+				<div style=" margin-top: 230px; position: fixed; width: 230px; background-color: yellow; z-index: 10000;">
+				<p>Due to our shortage of testing, the document can't view correctly under Internet Explorer <= 8.0. You may need update your browser, or downlad offline <a href="./static/gcta_doc_latest.pdf">PDF document</a>, <a href="./static/gcta_latest.zip">executable Files</a></p>
+				</div>
+				<![endif]-->
+            </div>
+            <div id="show" class="span9">
+                <p> Loading...</p>
+                <p> If it not work properly, you may need update your Internet browser and enable javascript</p>
+                <p> or downlad offline <a href="./download/OSCA.pdf">PDF document</a>, <a href="./download/OSCA_Linux.zip">executable Files</a></p>
+            </div>
+            <div id="content" class="span9" style="display: none;"><body><h2 id="overviewexpand" class="expand">Overview </h2>
+<hr><h3 id="about">About</h3>
+<p><strong>OSCA</strong> (OmicS-data-based Complex trait Analysis) is a software tool
+written in C/C++ for the analysis of complex traits using multi-omics
+data. It is developed by <a href="http://researchers.uq.edu.au/researcher/12709">Futao Zhang</a>, <a href="http://researchers.uq.edu.au/researcher/3051">Zhihong Zhu</a> and <a href="http://researchers.uq.edu.au/researcher/2713">Jian Yang</a> at Institute for Molecular Bioscience, The University of Queensland. Bug reports or questions: Jian Yang &lt;<a href="mailto:jian.yang@uq.edu.au">jian.yang@uq.edu.au</a>&gt;.</p>
+<p>Functions currently supported are:</p>
+<ul>
+<li><p>Estimating the epigenetic (or transcriptomic) relationships between individuals from genome-wide DNA methylation (or gene expression) data.</p></li>
+<li><p>Estimating the proportion of phenotypic variance for a complex trait can be "explained" by all DNA methylation (or gene expression) probes.</p></li>
+<li><p>Mixed linear model based analysis to test for associations between DNA methylation (or gene expression) probes and complex traits.</p></li>
+<li><p>Estimating the joint "effects" of all methylation (transcription) probes on a phenotype (e.g. BMI) in a mixed linear model (analogous to BLUP). These estimated effects can be used to predict the phenotype in a new independent sample.</p></li>
+<li><p>eQTL/mQTL analysis with linear regression model. The model can adjust for the relevant covarites. The results are saved in <a href="#BESDformat">BESD format</a>.</p></li>
+<li><p>vQTL analysis to test the homogeneity of variance. Three algorithms have been implemented (Bartlett’s test, Levene’s test and Brown–Forsythe test, Fligner-Killeen test). The results are saved in <a href="#BESDformat">BESD format</a>.</p></li>
+</ul>
+<p><strong>Note:</strong> Although this software tool is designed for gene expression and DNA methylation data, it can be applied to any other source of omics data including microbiome, proteome and brain connectome.</p>
+<hr><h3 id="credits">Credits</h3>
+<p><a href="http://researchers.uq.edu.au/researcher/12709">Futao Zhang</a> and <a href="http://researchers.uq.edu.au/researcher/2713">Jian Yang</a> developed the methods, software and webpage. <a href="http://researchers.uq.edu.au/researcher/3051">Zhihong Zhu</a> contributed to the development of the ORM and OREML methods. <a href="http://researchers.uq.edu.au/researcher/15871">Ting Qi</a> contributed to MeCS method. <a href="mailto:huanwei.wang@imb.uq.edu.au">Huanwei Wang</a> contributed to vQTL method. <a href="mailto:zhili.zheng@imb.uq.edu.au">Zhili Zheng</a> provided the template of the website.</p>
+<hr><h3 id="questionsandhelprequests">Questions and Help Requests</h3>
+<p>Bug reports or questions to Jian Yang (<a href="mailto:jian.yang@uq.edu.au">jian.yang@uq.edu.au</a>) at
+Institute for Molecular Bioscience, The University of Queensland.</p>
+<hr><h3 id="citation">Citation</h3>
+<p>Zhang F, Chen W, Zhu Z, Zhang Q, Deary IJ, Wray NR, Visscher PM, McRae AF, Yang J (2018) OSCA: a tool for omic-data-based complex trait analysis. <a href="https://www.biorxiv.org/content/early/2018/10/17/445163">bioRxiv 445163; doi: https://doi.org/10.1101/445163</a>.</p>
+<h2 id="downloadexpand" class="expand">Download </h2>
+<hr><h3 id="executablefilesversion043">Executable Files (version 0.43)</h3>
+<p>The Linux version is available at:
+<a href="./download/osca_Linux.zip">osca_Linux.zip</a>.</p>
+<p>The MacOS version is available at:
+<a href="./download/osca_Mac.zip">osca_Mac.zip</a>.</p>
+<p>The Windows version is available at:
+<a href="./download/osca_Win.zip">osca_Win.zip</a>.</p>
+<p>The example files are in <a href="./download/example.zip">example.zip</a>.</p>
+<p>The executable files (binary code) are release under MIT lincense.</p>
+<hr><h3 id="updatelog">Update log</h3>
+<p><strong>6.</strong> &nbsp;Version 0.43 (18 January, 2019): added a function to run a  variance quantitative trait locus (vQTL) analysis.</p>
+<p><strong>6.</strong> &nbsp;Version 0.42 (29 November, 2018): added an efficient function to run a mixed-linear-model-based cis-eQTL analysis.</p>
+<p><strong>5.</strong> &nbsp;Version 0.41 (22 October, 2018): added logistic regression in EWAS analysis.</p>
+<p><strong>4.</strong> &nbsp;Version 0.40 (14 August, 2018): added a new method called MOMENT for EWAS analysis and some functions for Data Management.</p>
+<p><strong>3.</strong> &nbsp;Version 0.39 (14 February, 2018): added a solution if the MLM estimation process in EWAS analysis does not work.</p>
+<p><strong>2.</strong> &nbsp;Version 0.38 (8 January, 2018): added meta analysis, eQTL analysis.</p>
+<p><strong>1.</strong> &nbsp;21 July, 2017: first release.</p>
+<h2 id="datamanagementexpand" class="expand">Data Management </h2>
+<p>The DNA methylation (or gene expression) data are stored in a binary
+format for storage efficiency. We store the data in
+three separate files .oii (individual information, similar as a PLINK
+.fam file), .opi (probe information) and .bod (a binary file to store
+the DNA methylation or gene expression profiles).</p>
+<p>To efficiently save the result of eQTL / vQTL analysis, OSCA also supports BESD format.</p>
+<hr><h3 id="bodformat">BOD format</h3>
+<h4 id="bodformatanefficientformattostoreomicsdata"># BOD format: an efficient format to store omics data</h4>
+<p><strong><em>myeed.oii</em></strong></p>
+<pre><code>F01 I01 0   0   NA
+F02 I01 0   0   NA
+F03 I02 0   0   NA
+... 
+</code></pre>
+<p>Columns are family ID, individual ID, paternal ID, maternal ID and sex
+(1=male; 2=female; 0=unknown). Missing data are represented by "<font color="red">NA</font>".</p>
+<p><strong><em>myeed.opi</em></strong></p>
+<pre><code>1   probe101    924243  Gene01  +
+1   probe102    939564  Gene01  -
+1   probe103    1130681 Gene01  -
+... 
+</code></pre>
+<p>Columns are chromosome, probe ID (can be the ID of an exon or a
+transcript for RNA-seq data), physical position, gene ID and gene
+orientation.</p>
+<p><strong><em>myeed.bod</em></strong></p>
+<p>DNA methylation (or gene expression) data in binary format. <font color="red">Please do
+not try to open this file with a text editor</font>.</p>
+<p><strong>Note:</strong> The text below are for advanced users only. We use the first
+12 bytes of the .bod file to store the descriptive information for the
+data. The first 2 bytes are reserved for further extension of the
+software. The type of data is indicated by the 3rd byte (0 for gene
+expression data, 1 for DNA methylation data, and 2 for any other type of
+data). The type of value is indicated by the 4th byte (0 for DNA
+methylation beta value, 1 for DNA methylation m value and 2 for any
+other type of value). The number of individuals and number of probes are
+stored as integers (4 bytes each). For example, for a DNA methylation
+data set (0x01) of m values (0x01) on 1,342 (0x53e) individuals and
+228,694 (0x37d56) CpG sites, the first 12 bytes of the .bod file are:</p>
+<pre><code>0101 0000 3e05 0000 567d 0300
+</code></pre>
+<p>The bytes afterwards are for the DNA methylation or gene expression
+data.</p>
+<hr><h3 id="makeabodfile">Make a BOD file</h3>
+<h4 id="compiledatainbinaryformatfromtextformat"># compile data in binary format from text format</h4>
+<pre><code> osca --efile myprofile.txt --methylation-beta --make-bod --out myprofile  
+</code></pre>
+<p><strong><span class="kwd">--efile</span></strong> reads a DNA methylation (or gene expression) data file
+in plain text format.</p>
+<p><strong><span class="kwd">--methylation-beta</span></strong> indicates methylation beta values in the
+file.</p>
+<p><strong><span class="kwd">--make-bod</span></strong> saves DNA methylation (or gene expression) data in
+binary format.</p>
+<p><strong><span class="kwd">--out</span></strong> saves data ( or results) in a file.</p>
+<p><strong><em>myprofile.txt</em></strong></p>
+<pre><code>FID  IID cg00000658  cg26036652  cg00489772  ...
+F01 I01 0.909   0.845   0.41    ...
+F01 I02 0.832   0.732   0.503   ...
+...
+</code></pre>
+<p>This is a file with a header line that contains family ID, individual ID
+and names of probes. The column of family ID is optional. Please use the
+flag "<strong><span class="kwd">--no-fid</span></strong>" for data without family ID.</p>
+<pre><code>osca --efile myprofile.txt  --methylation-beta --make-bod --no-fid --out myprofile 
+</code></pre>
+<p><strong><span class="kwd">--no-fid</span></strong> indicates data without family ID.</p>
+<pre><code>osca --efile myprofile.txt  --methylation-m --make-bod --out myprofile 
+</code></pre>
+<p><strong><span class="kwd">--methylation-m</span></strong> indicates DNA methylation m values in the file.</p>
+<p>If the profile is of gene expression value.</p>
+<pre><code>osca --efile myprofile.txt  --gene-expression --make-bod --out myprofile 
+</code></pre>
+<p><strong><span class="kwd">--gene-expression</span></strong> indicates gene expression profiles in the
+file.</p>
+<p>For any other type of data:</p>
+<pre><code>osca --efile myprofile.txt --make-bod --out myprofile 
+</code></pre>
+<p>A binary file also can be made from a transposed file in text format.</p>
+<pre><code>osca --tefile mytprofile.txt --methylation-beta --make-bod --no-fid --out myprofile
+</code></pre>
+<p><strong><em>mytprofile.txt</em></strong></p>
+<pre><code>FID  F01 F01 ...
+IID I01 I02 ...
+cg00000658  0.909   0.832   ...
+cg26036652  0.845   0.732   ...
+cg00489772  0.41    0.503   ...
+...
+</code></pre>
+<p>The row of family ID is optional. Please use the flag "<strong><span class="kwd">--no-fid</span></strong>" if
+there is no family ID in your data.</p>
+<pre><code>osca --tefile mytprofile.txt --methylation-beta --make-bod --no-fid --out myprofile 
+</code></pre>
+<h4 id="updateprobeannotation"># update probe annotation</h4>
+<p>Probe information are sometimes not available in the original DNA
+methylation (or gene expression) data. These information can be updated
+the command below.</p>
+<pre><code>osca --befile myprofile --update-opi annotated.opi 
+</code></pre>
+<p><strong><span class="kwd">--befile</span></strong> reads a DNA methylation (or gene expression) data file
+in binary format.</p>
+<p><strong><span class="kwd">--update-opi</span></strong> reads a fully annotated .opi file.</p>
+<hr><h3 id="managebodfiles">Manage BOD file(s)</h3>
+<h4 id="makeasubset"># make a subset</h4>
+<p>To extract a probe</p>
+<pre><code>osca --befile myprofile --probe cg00000658 --make-bod --out mysubprofile 
+</code></pre>
+<p><strong><span class="kwd">--probe</span></strong> extracts a specified probe.</p>
+<p>To exclude a probe</p>
+<pre><code>osca --befile myprofile --probe-rm cg00000658 --make-bod --out mysubprofile 
+</code></pre>
+<p><strong><span class="kwd">--probe-rm</span></strong> excludes a specified probe.</p>
+<p>To extract a subset of probes</p>
+<pre><code>osca --befile myprofile --extract-probe probe.list --make-bod --out mysubprofile 
+</code></pre>
+<p><strong><span class="kwd">--extract-probe</span></strong> extracts a subset of probes.</p>
+<p><strong><em>probe.list</em></strong></p>
+<pre><code>cg00000658
+cg26036652
+...                 
+</code></pre>
+<p>To exclude a subset of probes</p>
+<pre><code>osca --befile myprofile --exclude-probe probe.list --make-bod --out mysubprofile 
+</code></pre>
+<p><strong><span class="kwd">--exclude-probe</span></strong> excludes a subset of probes.</p>
+<p>To extract a subset of individuals</p>
+<pre><code>osca --befile myprofile --keep indi.list --make-bod --out mysubprofile 
+</code></pre>
+<p><strong><span class="kwd">--keep</span></strong> extracts a subset of individuals.</p>
+<p><strong><em>indi.list</em></strong></p>
+<pre><code>F01    I01
+F01 I02
+...                  
+</code></pre>
+<p>To exclude a subset of individuals</p>
+<pre><code>osca --befile myprofile --remove indi.list --make-bod --out mysubprofile 
+</code></pre>
+<p><strong><span class="kwd">--remove</span></strong> excludes a subset of individuals.</p>
+<p>To extract a subset of genes</p>
+<pre><code>osca --befile myprofile --genes gene.list --make-bod --out mysubprofile 
+</code></pre>
+<p><strong><span class="kwd">--genes</span></strong> extracts a subset of genes.</p>
+<p><strong><em>gene.list</em></strong></p>
+<pre><code>MAN1B1
+EDEM2
+...                    
+</code></pre>
+<p>To extract a gene</p>
+<pre><code>osca --befile myprofile --gene MAN1B1 --make-bod --out mysubprofile 
+</code></pre>
+<p><strong><span class="kwd">--gene</span></strong> extracts a gene.</p>
+<p>To extract a subset of probes based on the order</p>
+<pre><code>osca --befile myprofile --from-probe probe0 --to-probe probe1 --make-bod --out mysubprofile 
+</code></pre>
+<p><strong><span class="kwd">--from-probe</span></strong> specifies the start probe.</p>
+<p><strong><span class="kwd">--to-probe</span></strong> specifies the end probe.</p>
+<p>To extract a subset of probes in a genomic region centred at a specific
+probe</p>
+<pre><code>osca --befile myprofile --probe cg00000658 --probe-wind 500 --make-bod --out mysubprofile 
+</code></pre>
+<p><strong><span class="kwd">--probe-wind</span></strong> defines a window \&lt;kb&gt; centred on a specified probe.</p>
+<p>To extract a subset of probes on a chromosome</p>
+<pre><code>osca --befile myprofile --chr 1 --make-bod --out mysubprofile 
+</code></pre>
+<p><strong><span class="kwd">--chr</span></strong> specifies a chromosome to select probes.</p>
+<p>To extract a subset of probes based on physical positions</p>
+<pre><code>osca --befile myprofile --from-probe-kb 100 --to-probe-kb 200 --make-bod --out mysubprofile 
+</code></pre>
+<p><strong><span class="kwd">--from-probe-kb</span></strong> specifies the start physical position of the probes.</p>
+<p><strong><span class="kwd">--to-probe-kb</span></strong> specifies the end physical position of the
+probes.</p>
+<h4 id="mergebodfiles"># merge BOD files</h4>
+<pre><code>osca --befile-flist mybod.flist --make-bod --out myprofile 
+</code></pre>
+<p><strong><span class="kwd">--befile-flist</span></strong> reads a file to get the full paths of the binary files.</p>
+<p><strong><em>mybod.flist</em></strong></p>
+<pre><code>path1/my_bod1
+path2/my_bod2
+...                 
+</code></pre>
+<h4 id="qualitycontrol"># Quality control</h4>
+<p>To remvoe probes with low variance</p>
+<pre><code>osca --befile myprofile --sd-min 0.02 --make-bod --out newprofile 
+</code></pre>
+<p><strong><span class="kwd">--sd-min</span></strong> removes the probes with the standard deviation smaller
+than a specified threshold.</p>
+<p>To remove probes with a missing rate threshold</p>
+<pre><code>osca --befile myprofile --missing-ratio-probe 0.01 --make-bod --out newprofile 
+</code></pre>
+<p><strong><span class="kwd">--missing-ratio-probe</span></strong> specifies a missing proportion threshold
+to remove probes.</p>
+<h4 id="qualitycontrolofmethyaltiondata"># Quality control of methyaltion data</h4>
+<p>To remove constitutively methylated/unmethylated probes</p>
+<pre><code>osca --befile myprofile --upper-beta 0.8 --lower-beta 0.2 --make-bod --out newprofile 
+</code></pre>
+<p><strong><span class="kwd">--upper-beta</span></strong> removes the DNA methylation probes with the mean
+beta value larger than a specified threshold.</p>
+<p><strong><span class="kwd">--lower-beta</span></strong> removes the DNA methylation probes with the mean
+beta value smaller than a specified threshold.</p>
+<p>To QC with detection p-values</p>
+<pre><code>osca --befile myprofile --detection-pval-file dpval.txt --dpval-mth 0  --dpval-thresh 0.05 --make-bod --out newprofile 
+</code></pre>
+<p><strong><span class="kwd">--detection-pval-file</span></strong> reads a file that contains DNA
+methylation detection p-values.</p>
+<p><strong><span class="kwd">--dpval-mth</span></strong> specifies a method to do quality control with the
+detection p-values, 0 for removing the probes with one or more
+detection p-values violating a threshold (default as 0.05), and 1
+for dropping the samples violating a proportion threshold (default
+as 1%) and simultaneously dropping the probes violating a proportion
+threshold (default as 1%).</p>
+<p><strong><span class="kwd">--dpval-thresh</span></strong> specifies a threshold of detection p-value.</p>
+<pre><code>osca --befile myprofile --detection-pval-file dpval.txt --dpval-mth 1  --ratio-probe 0.01 --ratio-sample 0.01 --dpval-thresh 0.05 --make-bod --out newprofile 
+</code></pre>
+<p><strong><span class="kwd">--ratio-probe</span></strong> specifies a proportion threshold to remove
+probes.</p>
+<p><strong><span class="kwd">--ratio-sample</span></strong>specifies a proportion threshold to remove
+individuals.</p>
+<p>the file "dpval.txt" is in the same format with a transposed profile
+file. Option "<strong><span class="kwd">--no-fid</span></strong>" is also valid here.</p>
+<h4 id="adjustthecovariatesforeachprobe"># adjust the covariates for each probe</h4>
+<pre><code>osca --befile myprofile --covar my.cov --qcovar my.qcov --adj-probe --make-bod --out newprofile 
+</code></pre>
+<p><strong><span class="kwd">--adj-probe</span></strong> adjusts the covariates for each probe.</p>
+<h4 id="standardizeeachprobe"># standardize each probe</h4>
+<pre><code>osca --befile myprofile --std-probe --make-bod --out newprofile 
+</code></pre>
+<p><strong><span class="kwd">--std-probe</span></strong> standardizes each probe.</p>
+<pre><code>osca --befile myprofile --rint-probe --make-bod --out newprofile 
+</code></pre>
+<p><strong><span class="kwd">--rint-probe</span></strong> normalizes each probe by Rank-based Inverse Normal Transformation.</p>
+<h4 id="otheroptions"># other options</h4>
+<p>Transform methylation beta value to methylation m value and vice versa</p>
+<pre><code>osca --befile myprofile --m2beta --make-bod --out newprofile 
+</code></pre>
+<p><strong><span class="kwd">--m2beta</span></strong> calculates the methylation beta value from the
+methylation m value.</p>
+<pre><code>osca --befile myprofile --beta2m --make-bod --out newprofile 
+</code></pre>
+<p><strong><span class="kwd">--beta2m</span></strong> calculates the methylation m value from the
+methylation beta value.</p>
+<hr><h3 id="queryabodfile">Query a BOD file</h3>
+<h4 id="makeatextformatfile"># make a text format file</h4>
+<pre><code>osca --befile myprofile --make-efile --out myprofile.txt 
+</code></pre>
+<p><strong><span class="kwd">--make-efile</span></strong> saves the DNA methylation (or gene expression)
+data in text format.</p>
+<pre><code>osca --befile myprofile --make-tefile --out mytprofile.txt 
+</code></pre>
+<p><strong><span class="kwd">--make-tefile</span></strong> saves the DNA methylation (or gene expression)
+data in transposed text format.</p>
+<p><strong>NOTE</strong>: The options in <a href="#ManageBODfile(s)">Manage BOD file(s)</a> can also be applied.</p>
+<h4 id="calculatethevarianceandthemeanofprobes"># Calculate the variance and the mean of probes</h4>
+<pre><code>osca --befile myprofile --get-variance --get-mean --out newprofile 
+</code></pre>
+<p><strong><span class="kwd">--get-variance</span></strong> calculates the variance of each probe.</p>
+<p><strong><span class="kwd">--get-mean</span></strong> calculates the mean of each probe.</p>
+<p><strong><em>newprofile.var.txt</em></strong></p>
+<pre><code>cg00000957 0.000812127
+cg00001349  0.00560701
+...                 
+</code></pre>
+<p><strong><em>newprofile.mean.txt</em></strong></p>
+<pre><code>cg00000957 0.901574
+cg00001349  0.860279
+...                 
+</code></pre>
+<hr><h3 id="besdformat">BESD format</h3>
+<p>Results from eQTL analysis will be saved in SMR BESD format <a href="http://cnsgenomics.com/software/smr/#BESDformat">see SMR website for more information</a>.To save the eQTL results more efficiently, we extended the BESD format.</p>
+<p><strong>Note:</strong> The texts below are for advanced users only. </p>
+<p><strong>BESD dense format 1</strong>: the first 64 Bytes are reserved for the descriptive information which starts with 0x00000005. The data onwards are a vector of effect sizes followed by a vector of SEs of each probe across all the snps. The effect sizes and SEs are saved in single float-precision (4B).</p>
+<p><strong>BESD dense format 2</strong> (only supported in OSCA): the first 64 Bytes are reserved for the descriptive information which starts with 0x00000004. The data onwards are the effect sizes followed by the SEs of each SNP across all the probes. The effect sizes and SEs are saved in single float-precision (4B).</p>
+<p><strong>BESD sparse format</strong>:  the first 64 Bytes are reserved for the descriptive information which starts with 0x00000001. The effect sizes and the SEs as saved in <a href="https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_column_(CSC_or_CCS)">the CSC format</a></p>
+<hr><h3 id="queryabesdfile">Query a BESD file</h3>
+<p>This feasuer is memory efficent even to query with huge dense BESD file.</p>
+<h4 id="commandlineoptionsforsnps"># Command line options for SNPs</h4>
+<p>To query the eQTL resutls for a single SNP, we could use this command</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --snp rs123 --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--query</span></strong> saves in text format a subset of the eQTL summary
+dataset based on the specified eQTL p-value threshold. The default
+value is 5.0e-8.</p>
+<p><strong><span class="kwd">--snp</span></strong> specifies a single SNP.</p>
+<p><strong><em>myquery.txt</em></strong></p>
+<pre><code>SNP    Chr BP  A1  A2  Freq    Probe   Probe_Chr   Probe_bp    Gene    Orientation b   se  p
+rs01    1   1001    A   G   0.23    cg01    1   1101    gene1   +   -0.033  0.006   3.8e-08
+rs01    1   1001    A   G   0.06    cg02    1   1201    gene2   -   0.043   0.007   8.1e-10
+......    
+</code></pre>
+<p>To query the eQTL resutls excluding a single SNP, we could use this command</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --snp-rm rs123 --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--snp-rm</span></strong> specifies a single SNP to exclude.</p>
+<p>To query the eQTL resutls extracting a subset of SNPs , we could use this command</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --extract-snp mysnp.list --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--extract-snp</span></strong> extracts a subset of SNPs for analysis.</p>
+<p>To query the eQTL resutls excluding a subset of SNPs , we could use this command</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --exclude-snp mysnp.list --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--exclude-snp</span></strong> excludes a subset of SNPs from analysis.</p>
+<p>To query eQTL resutls for a range of SNPs in a genomic region</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --from-snp rs123 --to-snp rs456 --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--from-snp</span></strong> specifies the start SNP.</p>
+<p><strong><span class="kwd">--to-snp</span></strong> specifies the end SNP.</p>
+<p><strong>NOTE</strong> : All SNPs should be on the same chromosome.</p>
+<p>To query eQTL results for all SNP on a chromosome</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --snp-chr 1 
+</code></pre>
+<p><strong><span class="kwd">--snp-chr</span></strong> specifies a chromosome to select SNPs.</p>
+<p><strong>NOTE</strong> : The probes in the result could be on the other chromosomes if
+there are <em>trans</em>-eQTLs.</p>
+<p>To query SNPs based on physical positions</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --snp-chr 1 --from-snp-kb 100 --to-snp-kb 200 --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--from-snp-kb</span></strong> specifies the start physical position of the
+region.</p>
+<p><strong><span class="kwd">--to-snp-kb</span></strong> specifies the end physical position of the region.</p>
+<p><strong>NOTE</strong> : You will need to specify a chromosome (using the '<span class="kwd">--snp-chr</span>'
+option) when using this option.</p>
+<p>To query based on a flanking region of a SNP</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --snp rs123 --snp-wind 50 --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--snp-wind</span></strong> defines a window centred on a specified SNP.</p>
+<h4 id="commandlineoptionsforprobes"># Command line options for probes</h4>
+<p>To query based on a single probe</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --probe cg123 --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--probe</span></strong> specifies a single probe.</p>
+<p>To query excluding a single probe</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --probe-rm cg123 --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--probe-rm</span></strong> specifies a single probe to exclude.</p>
+<p>To query the eQTL resutls extracting a subset of probes , we could use this command</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --extract-probe myprobe.list --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--extract-probe</span></strong> extracts a subset of probes for analysis.</p>
+<p>To query the eQTL resutls excluding a subset of probes , we could use this command</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --exclude-probe myprobe.list --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--exclude-probe</span></strong> excludes a subset of probes from analysis.</p>
+<p>To query based on a range of probes</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --from-probe cg123 --to-probe cg456 --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--from-probe</span></strong> specifies the start probe.</p>
+<p><strong><span class="kwd">--to-probe</span></strong> specifies the end probe.</p>
+<p>NOTE : All probes should be on the same chromosome.</p>
+<p>To query based on a chromosome</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --probe-chr 1 
+</code></pre>
+<p><strong><span class="kwd">--probe-chr</span></strong> specifies a chromosome to select probes.</p>
+<p><strong>NOTE</strong> : The SNPs in the result could be on the other chromosomes if there
+are <em>trans</em>-eQTLs.</p>
+<p>To query based on physical positions of the probes</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --probe-chr 1 --from-probe-kb 1000 --to-probe-kb 2000 --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--from-probe-kb</span></strong> specifies the start physical position of the
+probes.</p>
+<p><strong><span class="kwd">--to-probe-kb</span></strong> specifies the end physical position of the
+probes.</p>
+<p><strong>NOTE</strong> : You will need to specify a chromosome (using the '<span class="kwd">--probe-chr</span>'
+option) when using this option.</p>
+<p>To query based on a flanking region of a probe</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --probe cg123 --probe-wind 1000 --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--probe-wind</span></strong> defines a window centred on a specified probe.</p>
+<p>To query based on a gene</p>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --gene gene1 --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--gene</span></strong> specifies a single gene to select probes.</p>
+<h4 id="commandlineoptionforcisregion"># Command line option for cis-region</h4>
+<pre><code>osca --beqtl-summary myeqtl --query 5.0e-8 --probe cg123 --cis-wind 2000 --out myquery 
+</code></pre>
+<h4 id="filelistoptions"># File-list options</h4>
+<p>To query based on a list of SNPs</p>
+<pre><code>osca --beqtl-summary myeqtl --extract-snp snp.list --query 5.0e-8 --out myquery 
+</code></pre>
+<p>To query based on a list of probes</p>
+<pre><code>osca --beqtl-summary myeqtl --extract-probe probe.list --query 5.0e-8 --out myquery
+</code></pre>
+<p>To qurey based on a list of genes</p>
+<pre><code>osca --beqtl-summary myeqtl --genes gene.list --query 5.0e-8 --out myquery 
+</code></pre>
+<p><strong><span class="kwd">--genes</span></strong> extracts a subset of probes which tag the genes in the
+list.</p>
+<p><strong><em>gene.list</em></strong></p>
+<pre><code>gene1
+gene2
+gene3
+...
+</code></pre>
+<hr><h3 id="manageabesdfile">Manage a BESD file</h3>
+<h4 id="makeasubsetofdata"># make a subset of data</h4>
+<p>All the data management options in <a href="file:///Users/futao.zhang/Desktop/20171212/osc_doc/build/index.html#QueryaBESDfile">Query a BESD file</a> can be here.</p>
+<p>for example, To extract a subset of SNPs and/or probes</p>
+<pre><code>osca --beqtl-summary myeqtl --extract-snp mysnp.list --extract-probe myprobe.list  --make-besd --out mybesd 
+</code></pre>
+<h4 id="tansformtosmrcompatibleformat"># tansform to SMR compatible format</h4>
+<pre><code>osca --beqtl-summary myeqtl --make-besd --to-smr --out mybesd 
+</code></pre>
+<p><strong><span class="kwd">--to-smr</span></strong> tranforms BESD file to SMR compatible format.</p>
+<h4 id="shrinkabesdfile"># shrink a BESD file</h4>
+<p>To remove probes without any value across all the SNPs and SNPs without any value across all the probes.</p>
+<pre><code>osca --beqtl-summary myeqtl --make-besd --besd-shrink --out mybesd 
+</code></pre>
+<p><strong><span class="kwd">--besd-shrink</span></strong> removes probes and SNPs that have no value.</p>
+<h2 id="ormexpand" class="expand">ORM </h2>
+<hr><h3 id="estimateorm">estimate ORM</h3>
+<pre><code>osca --befile myprofile --make-orm --out myorm
+</code></pre>
+<pre><code>osca --befile myprofile --make-orm-bin --out myorm
+</code></pre>
+<p><strong><span class="kwd">--make-orm</span></strong> or <strong><span class="kwd">--make-orm-bin</span></strong> estimates the omics relationship matrix (ORM) between pairs of individuals from a set of probes and save the lower triangle elements of ORM to binary files. This format is compatible with the <a href="http://cnsgenomics.com/software/gcta/#MakingaGRM">GRM</a> in the <a href="http://cnsgenomics.com/software/gcta/">GCTA</a> software.</p>
+<pre><code>osca --befile myprofile --make-orm-gz --out myorm
+</code></pre>
+<p><strong><span class="kwd">--make-orm-gz</span></strong> estimates the ORM and save the lower triangle
+elements of ORM to compressed plain text files.</p>
+<pre><code>osca --befile myprofile --make-orm --orm-alg 1 --out myorm
+</code></pre>
+<p><strong><span class="kwd">--orm-alg</span></strong> specifies the algorithm to estimate the ORM. 1 for
+standardized data of each probe, 2 for centred data of each probe
+and 3 for iteratively standardizing probes and individuals. The default option
+is 1.</p>
+<p>Note that although we describe the options above using DNA methylation
+and gene expression data, all the options can be applied to any other
+source of omics data mentioned above.</p>
+<hr><h3 id="principalcomponentanalysis">Principal Component Analysis</h3>
+<pre><code>osca --orm myorm --pca 20 --out mypca
+</code></pre>
+<p><strong><span class="kwd">--orm</span></strong> reads the ORM binary files.</p>
+<p><strong><span class="kwd">--pca</span></strong> conducts principal component analysis and saves the first n (default as 20) PCs.</p>
+<p><strong><em>mypca.eigenval</em></strong></p>
+<pre><code>122.014
+95.3064
+70.8055
+...                    
+</code></pre>
+<p><strong><em>mypca.eigenvec</em></strong></p>
+<pre><code>R06C01 R06C01  0.012637    -0.00328532 0.0263842   -0.00595246
+R05C02  R05C02  0.0106692   -0.0184545  -0.0159826  0.013951
+R04C02  R04C02  0.0024727   -0.0118185  -0.0256503  -0.0106235
+...                    
+</code></pre>
+<p>Users can also manipulate the ORM in the analysis.</p>
+<pre><code>osca --orm myorm --keep indi.list --pca 20 --out mypca
+</code></pre>
+<pre><code>osca --orm myorm --remove indi.list --pca 20 --out mypca
+</code></pre>
+<pre><code>osca --orm myorm --orm-cutoff 0.05 --pca 20 --out mypca
+</code></pre>
+<p><strong><span class="kwd">--orm-cutoff</span></strong> removes one of a pair of individuals with
+estimated omics relationships larger than the specified cut-off
+value.</p>
+<pre><code>osca --multi-orm myorm.flist --pca 20 --out mypca
+</code></pre>
+<p><strong><span class="kwd">--multi-orm</span></strong> reads multiple ORMs in binary format.</p>
+<h2 id="oreml">OREML</h2>
+<pre><code>osca --reml --pheno my.phen --out myreml
+</code></pre>
+<p><strong><span class="kwd">--reml</span></strong> performs REML (restricted maximum likelihood) analysis.
+This option is usually followed by the option <span class="kwd">--orm</span> (one ORM) or
+<span class="kwd">--merge-orm</span> (multiple ORMs) to estimate the variance explained by
+the probes that were used to estimate the omics relationship matrix.</p>
+<p><strong><span class="kwd">--pheno</span></strong> reads phenotype data from a plain text file. Missing
+value should be represented by "NA".</p>
+<p><strong><em>my.phen</em></strong></p>
+<pre><code>R06C01 R06C01  32.6332
+R05C02  R05C02  23.9411
+R04C02  R04C02  29.7441
+...                    
+</code></pre>
+<p><strong>NOTE:</strong> current version only supports single trait analysis in one
+run.</p>
+<pre><code>osca --reml --orm myorm --pheno my.phen --out myreml
+</code></pre>
+<pre><code>osca --reml --orm myorm --pheno my.phen --keep indi.list --out myreml
+</code></pre>
+<pre><code>osca --reml --orm myorm --pheno my.phen --orm-cutoff 0.05 --out myreml
+</code></pre>
+<p>With multiple ORMs</p>
+<pre><code>osca --reml --multi-orm myorm.flist --pheno my.phen --out myreml
+</code></pre>
+<pre><code>osca --reml --multi-orm myorm.flist --pheno my.phen --reml-alg 0 --out myreml
+</code></pre>
+<p><strong><span class="kwd">--reml-alg</span></strong> specifies the algorithm to do REML iterations, 0 for
+average information (AI), 1 for Fisher-scoring and 2 for EM. The
+default option is 0, i.e. AI-REML, if this option is not specified.</p>
+<pre><code>osca --reml --multi-orm myorm.flist --pheno my.phen --reml-maxit 100 --out myreml
+</code></pre>
+<p><strong><span class="kwd">--reml-maxit</span></strong> specifies the maximum number of iterations. The
+default number is 100 if this option is not specified.</p>
+<pre><code>osca --reml --orm myorm --pheno my.phen --covar my.covar --out myreml
+</code></pre>
+<p><strong><span class="kwd">--covar</span></strong> reads discrete covariates from a plain text file.</p>
+<p><strong><em>my.covar</em></strong></p>
+<pre><code>R06C01 R06C01  F   0
+R05C02  R05C02  F   1
+R04C02  R04C02  M   1
+...                    
+</code></pre>
+<pre><code>osca --reml --orm myorm --pheno my.phen --qcovar my.qcovar --out myreml
+</code></pre>
+<p><strong><span class="kwd">--qcovar</span></strong> reads quantitative covariates from a plain text file.</p>
+<p><strong><em>my.qcovar</em></strong></p>
+<pre><code>R06C01 R06C01  25
+R05C02  R05C02  16
+R04C02  R04C02  30
+...                    
+</code></pre>
+<pre><code>osca --reml --orm myorm --pheno my.phen --reml-est-fix --out myreml
+</code></pre>
+<p><strong><span class="kwd">--reml-est-fix</span></strong> displays the estimates of fixed effects on the
+screen.</p>
+<pre><code>osca --reml --orm myorm --pheno my.phen --reml-no-lrt --out myreml
+</code></pre>
+<p><strong><span class="kwd">--reml-no-lrt</span></strong> turns off the LRT.</p>
+<h2 id="ewasexpand" class="expand">EWAS </h2>
+<hr><h3 id="moment">MOMENT</h3>
+<h4 id="momentmulticomponentmlmbasedassociationexcludingthetarget"># MOMENT (Multi-cOmponent Mlm-based association ExcludiNg the Target)</h4>
+<pre><code>osca --moment --befile myprofile --pheno my.phen --out my
+</code></pre>
+<p><strong><span class="kwd">--moment</span></strong> initiates a multi-component MLM based association analysis excluding
+the target probe (the probe to be tested for association) and the probes in its flanking region from the
+ORM (the size of flanking region can be modified by <span class="kwd">--moment-wind</span>). The results will be saved in a plain text file with *.mlma.
+as the filename extension.</p>
+<pre><code>osca --moment --befile myprofile --pheno my.phen --moment-wind 100 --out my
+</code></pre>
+<p><strong><span class="kwd">--moment-wind</span></strong> specifies a flanking region to exclude probes from the ORM. The default value is 100 Kb (i.e. a 100 Kb region centred at the probe to be tested).</p>
+<p><strong><em>my.mlma</em></strong></p>
+<pre><code>Chr    Probe   bp  Gene    Orientation b   se  p
+1   cg00003287  201346149   TNNT2   -   -0.156  0.597   0.794
+1   cg00008647  207082900   IL24    +   0.032   0.354   0.926
+1   cg00009292  50882082    DMRTA2  -   0.120   1.182   0.919
+...                    
+</code></pre>
+<p>This is a text file with headers. Columns are chromosome, probe, probe
+BP, gene, orientation, effect size, standard error and p-value.</p>
+<p><strong>NOTE:</strong> Sometimes the MLM estimation process in the EWAS analysis does not work (the REML iteration cannot converge or an estimate hits the boundaries of parameter space) especially when the sample size is small. In such case we switch MLMA to standard PC based linear regression analysis. We have implemented a strategy to identify the number of PCs iteratively until the genomic inflation factor (lambda value) falls into a user-defined range, or the number of PCs reaches the lower (0) or upper boundary (half of the sample size). The range size for lambda can be specified by the option <strong><span class="kwd">--lambda-range</span></strong></p>
+<pre><code>osca --moment --befile myprofile --pheno my.phen --lambda-range 0.05 --out my
+</code></pre>
+<p><strong><span class="kwd">--lambda-range</span></strong> specifies a range for the lambda value. The default value is 0.05. This option only works when the MLM estimation process fails.</p>
+<p><strong>NOTE:</strong> The analysis becomes slower as the number of PCs becomes larger. The option <strong><span class="kwd">--fast-linear</span></strong> can accelerate the analysis by pre-adjusting both the trait and gene expression (or DNA methylation) value by the PCs. In this case, all the missing gene expression (or DNA methylation) values will be replaced by the mean. It should be noted that if the proportion of missing values in the gene expression (or DNA methylation) data is large, this accelerated analysis may lead to substantial differences in results.</p>
+<pre><code>osca --moment --befile myprofile --pheno my.phen --fast-linear --out my
+</code></pre>
+<p><strong><span class="kwd">--fast-linear</span></strong> runs a fast linear regression analysis. This flag can also be used in the <a href="#FastLinearRegression">Fast Linear Regression analysis module</a></p>
+<hr><h3 id="moa">MOA</h3>
+<h4 id="moamlmbasedomicassociation"># MOA (MLM-based Omic Association)</h4>
+<pre><code>osca --moa --befile myprofile --pheno my.phen --out my
+</code></pre>
+<p>If you have already computed the ORM</p>
+<pre><code>osca --moa --befile myprofile --pheno my.phen --orm myorm --out my
+</code></pre>
+<p><strong><span class="kwd">--moa</span></strong> initiates an MLM based association analysis including
+the target probe (the probe to be tested for association) in the
+ORM. The results will be saved in a plain text file with <strong>.mlma</strong>
+as the filename extension.</p>
+<hr><h3 id="linearregression">Linear Regression</h3>
+<pre><code>osca --befile myprofile --pheno my.phen --linear --out my
+</code></pre>
+<pre><code>osca --befile myprofile --pheno my.phen --qcovar my.qcovar --covar my.covar --linear --out my
+</code></pre>
+<p><strong><span class="kwd">--linear</span></strong> saves linear regression statistics to a plain text file.</p>
+<p><strong><em>my.linear</em></strong></p>
+<pre><code>probeChr   ProbeID Probe_bp Gene    Orientation   BETA    SE  P   NMISS
+1   cg00003287  201346149   TNNT2   -   -0.0594 0.531   9.11e-01    1337
+1   cg00008647  207082900   IL24    +   0.5003  0.263   5.72e-02    1337
+1   cg00009292  50882082    DMRTA2  -    1.0512  1.026   3.06e-01    1337
+...                    
+</code></pre>
+<p>This is a text file with headers. Columns are chromosome, probe, probe
+BP, gene, orientation, effect size, standard error, p-value and number of non-missing
+individuals.</p>
+<hr><h3 id="fastlinearregression">Fast Linear Regression</h3>
+<p>The options above fit the covariates in the model as y=xb+Cβ+e. This is equivalent to y<sup>'</sup>=y-Cβ<sup>^</sup>, x<sup>'</sup>=x-Cβ<sup>^</sup>, y<sup>'</sup>=x<sup>'</sup>b. This equivalent transformation avoids the repeated computing of the inverse of a (p +1)*(p + 1) matrix where p is the number of covariates.</p>
+<pre><code>osca --linear --befile myprofile --pheno my.phen --qcovar my.qcovar --covar my.covar --fast-linear --out my
+</code></pre>
+<p><strong><span class="kwd">--fast-linear</span></strong>  runs a fast linear regression analysis.</p>
+<hr><h3 id="logisticregression">Logistic Regression</h3>
+<pre><code>osca --befile myprofile --pheno my.phen --logistic --out my
+</code></pre>
+<pre><code>osca --befile myprofile --pheno my.phen --qcovar my.qcovar --covar my.covar --logistic --out my
+</code></pre>
+<p><strong><span class="kwd">--logistic</span></strong> outputs logistic regression analysis result to a plain text file.</p>
+<p><strong><em>my.logistic</em></strong></p>
+<pre><code>probeChr   ProbeID Probe_bp Gene    Orientation   OR    SE  P   NMISS
+1    cg00297950  110282525   GSTM3   -   0.010953    1.30438 5.386424e-04    1318
+1    cg00299820  11943154    NPPB    -   0.0085006   2.77659 8.596523e-02    1318
+1    cg00305285  1017115 RNF223  -   8.22097 2.99934 4.824397e-01    1318
+...                    
+</code></pre>
+<p>This is a text file with headers. Columns are chromosome, probe, probe
+BP, gene, orientation, odd ratio, standard error, p-value and number of non-missing
+individuals.</p>
+<p><strong>NOTE:</strong> It is allowed to use characters, strings, or numbers as phenotype values in logistic regression but "NA" or "na" will be recognised as a missing value.</p>
+<hr><h3 id="ewassimulation">EWAS simulation</h3>
+<p>The phenotypes are simulated based on a set of real DNA methylation (or
+gene expression) data and a simple model y= sum(x<sub>i</sub>b<sub>i</sub>)+ε, where y is
+a vector of phenotypes, x<sub>i</sub> is a vector of raw DNA methylation (or gene
+expression) profile or standardized profile of the i-th "causal"
+probe, b<sub>i</sub> is the effect of the i-th causal probe and ε ~ N(0,var(
+sum(x<sub>i</sub>b<sub>i</sub>))(1/h<sup>2</sup>-1) ) is a vector of residual effect.</p>
+<pre><code>osca --simu-qt --simu-hsq 0.1 --befile myprofile --simu-causal-loci mycausal.list --out mypheno
+</code></pre>
+<p><strong><span class="kwd">--simu-qt</span></strong> smulates a quantitative trait.</p>
+<p><strong><span class="kwd">--simu-hsq</span></strong> specifies the proportion of variance in phenotype
+explained by the causal probes. The default value is 0.1.</p>
+<p><strong><span class="kwd">--simu-causal-loci</span></strong> reads a list of probes as causal probes. If
+the effect sizes are not specified in the file, they will be
+generated from a standard normal distribution.</p>
+<p><strong><em>mycausal.list</em></strong></p>
+<pre><code>cg04584301 1.55182
+cg04839274  -0.106226
+cg16648571  0.0257417
+...                    
+</code></pre>
+<p>This is a text file with no headers. Columns are probe ID and effect
+size.</p>
+<pre><code>osca --simu-qt --simu-hsq 0.1 --simu-eff-mod 0 --befile myprofile --simu-causal-loci mycausal.list --out mypheno
+</code></pre>
+<p><strong><span class="kwd">--simu-eff-mod</span></strong> specifies whether or not to standardize the
+causal probe, 0 for standardized profile and 1 for raw profile. The
+default value is 0.</p>
+<pre><code>osca --simu-cc 100 300 --simu-hsq 0.1 --simu-k 0.1 --befile myprofile --simu-causal-loci mycausal.list --out mypheno
+</code></pre>
+<p><strong><span class="kwd">--simu-cc</span></strong> simulates a case-control trait and specifies the
+number of cases and the number of controls.</p>
+<p><strong><span class="kwd">--simu-k</span></strong> specifies the disease prevalence. The default value is
+0.1 if this option is not specified.</p>
+<h2 id="predictionanalysisexpand" class="expand">Prediction Analysis </h2>
+<pre><code>osca --reml --orm myorm --pheno my.phen --reml-pred-rand --out myblp
+</code></pre>
+<p><strong><span class="kwd">--reml-pred-rand</span></strong> predicts the random effects by the BLUP (best
+linear unbiased prediction) method. This option is to estimate the
+aggregated effect of all the probes (used to compute the ORM) to the
+phenotype of an individual. The aggregated omics effects of all the
+individuals will be saved in a plain text file <strong>*.indi.blp</strong>.</p>
+<p><strong><em>myblp.indi.blp</em></strong></p>
+<pre><code>R06C01 R06C0   1.02275 0.07065 1.05692 1.05692
+R05C02  R05C02  0.18653 0.27059 0.86650 0.86650
+R04C02  R04C02  -0.1982 -0.1673 -0.9209 -0.9209
+...                    
+</code></pre>
+<p>This is a text file with no headers. Columns are family ID, individual
+ID, an intermediate variable, the aggregated omics effect, another
+intermediate variable and the residual effect.</p>
+<pre><code>osca --befile myprofile --blup-probe myblp.indi.blp --out myblp
+</code></pre>
+<p><strong><span class="kwd">--blup-probe</span></strong> calculates the BLUP solutions for the probe
+effects.</p>
+<p><strong><em>myblp.probe.blp</em></strong></p>
+<pre><code>cg04584301 -0.000654646
+cg04839274  0.000602484
+cg16648571  -4.70356e-05
+...                    
+</code></pre>
+<p>This is a text file with no headers. Columns are probe ID and BLUP of
+the probe effect.</p>
+<pre><code>osca --befile myprofile --score myblp.probe.blp --out myscore
+</code></pre>
+<pre><code>osca --befile myprofile --score myblp.probe.blp 1 2 --out myscore
+</code></pre>
+<p><strong><span class="kwd">--score</span></strong> reads score files for probes and generates predicted
+omics profiles for individuals. (Note that this option largely
+follows the <span class="kwd">--score</span> option in PLINK.) It allows users to specify
+the column numbers for probe ID and score (the default values are 1
+and 2 as shown in the example above).</p>
+<p><strong><em>myscore.profile</em></strong></p>
+<pre><code>FID    IID PHENO   CNT SCORE
+131000028   422572  -9  20000   -7.269198e-07
+131000031   243421  -9  20000   9.322096e-06
+131000179   338728  -9  20000   -1.250443e-05
+...                    
+</code></pre>
+<p>This is a text file with headers. Columns are family ID, individual ID,
+phenotype, Number of non-missing probes and score.</p>
+<pre><code>For example
+In the score file:
+cg04584301  -0.065
+cg04839274  0.060
+cg16648571  -1.03
+
+In the DNA methylation data:
+FID IID cg04584301  cg04839274  cg16648571
+R05C02  R05C02  0.18653 0.27059 0.86650
+
+The score should be:
+( 0.18653*(-0.065) + 0.27059*0.060 + (-1.03)*0.86650 ) / 3 = (-0.8883841) / 3 = -0.296
+</code></pre>
+<pre><code>osca --befile myprofile --score myblp.probe.blp --score-has-header --out myscore
+</code></pre>
+<p><strong><span class="kwd">--score-has-header</span></strong> indicates probe score file has headers.</p>
+<h2 id="eqtlmqtlanalysisexpand" class="expand">eQTL/mQTL Analysis </h2>
+<p>This is a module in OSCA to perform a standard eQTL mapping analysis. We describe the module for eQTL mapping but it can be applied to genetic association analysis for all kinds of molecular traits (e.g. DNA methylation, histone modification, metabolites and Microbiome)</p>
+<hr><h3 id="linearregressionbased">Linear-regression-based</h3>
+<h4 id="basicoption"># Basic option</h4>
+<pre><code>osca --eqtl --bfile mydata --befile myprofile --out myeqtl
+</code></pre>
+<p><strong><span class="kwd">--eqtl</span></strong> enables the eQTL mapping analysis.</p>
+<p><strong><span class="kwd">--bfile</span></strong> reads individual-level SNP genotype data (in PLINK binary format), i.e. .bed, .bim, and .fam files.</p>
+<p>By default, the results will be saved in <a href="#BESDformat">BESD  format </a> . </p>
+<h4 id="multithreadingcomputation"># Multi-threading computation</h4>
+<pre><code>osca --eqtl --bfile mydata --befile myprofile --task-num 100 --task-id 1 --thread-num 10 --out myeqtl
+</code></pre>
+<p><strong><span class="kwd">--task-num</span></strong> specifies the total number of tasks to partition the computation by probes.</p>
+<p><strong><span class="kwd">--task-id</span></strong> specifies the task IDs form 1 to the total task number.</p>
+<p><strong><span class="kwd">--thread-num</span></strong> specifies the number of threads for parallel computing. The default value is 1.</p>
+<h4 id="usingotherdatamanagementoptions"># Using other data management options</h4>
+<pre><code>osca --eqtl --bfile mydata --befile myprofile --extract-snp mysnp.list --maf 0.01 --task-num 100 --task-id 1 --thread-num 10 --out myeqtl
+</code></pre>
+<p><strong><span class="kwd">--maf</span></strong> filters SNPs based on the specified MAF threshold.</p>
+<h4 id="savingtheresultinsmrbesdformathttpcnsgenomicscomsoftwaresmrbesdformat"># Saving the result in <a href="http://cnsgenomics.com/software/smr/#BESDformat">SMR BESD format</a>.</h4>
+<pre><code>osca --eqtl --bfile mydata --befile myprofile --to-smr --task-num 100 --task-id 1 --thread-num 10 --out myeqtl
+</code></pre>
+<p><strong><span class="kwd">--to-smr</span></strong> saves the result in SMR compatible format. </p>
+<h4 id="fittingcovariates"># Fitting covariates</h4>
+<pre><code>osca --eqtl --bfile mydata --befile myprofile --covar mycovar --qcovar myqcovar --task-num 100 --task-id 1 --thread-num 10 --out myeqtl
+</code></pre>
+<h4 id="runingciseqtlanalysis"># runing cis-eQTL analysis</h4>
+<pre><code>osca --eqtl --bfile mydata --befile myprofile --cis --task-num 1000 --task-id 1 --thread-num 10 --out myeqtl
+</code></pre>
+<pre><code>osca --eqtl --bfile mydata --befile myprofile --cis --cis-wind 2000 --task-num 100 --task-id 1 --thread-num 10 --out myeqtl
+</code></pre>
+<p><strong><span class="kwd">--cis</span></strong> runs a cis-eQTL analysis.</p>
+<p><strong><span class="kwd">--cis-wind</span></strong> specifies a window (in Kb unit) to store all the SNPs within the window of the probe in either direction. The default value is 2000Kb.</p>
+<hr><h3 id="mixedlinearmodelbased">Mixed-linear-model-based</h3>
+<h4 id="runingciseqtlanalysis-1"># runing cis-eQTL analysis</h4>
+<pre><code>osca --eqtl --bfile mydata --befile myprofile --mlm --cis --task-num 100 --task-id 1 --thread-num 10 --out myeqtl
+</code></pre>
+<p><strong><span class="kwd">--mlm</span></strong> runs a mixed-linear-model-based eQTL analysis on mixed linear model.</p>
+<pre><code>osca --eqtl --bfile mydata --befile myprofile --mlm --cis --grm mydata --task-num 100 --task-id 1 --thread-num 10 --out myeqtl
+</code></pre>
+<p><strong><span class="kwd">--grm</span></strong> reads the GRM generated by <a href="http://cnsgenomics.com/software/gcta">GCTA</a> <strong><span class="kwd">--make-grm</span></strong> option.</p>
+<h2 id="vqtlanalysisexpand" class="expand">vQTL Analysis </h2>
+<p>This is a module in OSCA to perform a variance quantitative trait locus (vQTL) mapping analysis and save the results in <a href="#BESDformat">BESD format</a>. We have provided 4 methods to run vQTL analysis, namely <a href="https://en.wikipedia.org/wiki/Bartlett%27s_test">Bartlett’s test</a>, <a href="https://en.wikipedia.org/wiki/Levene%27s_test">Levene’s test</a> with mean, <a href="https://en.wikipedia.org/wiki/Levene%27s_test">Levene’s test</a> with median, and <a href="http://www.cookbook-r.com/Statistical_analysis/Homogeneity_of_variance/#fligner-killeen-test">Fligner-Killeen test</a>. In the output file, apart from the vQTL statistic and p-value, we also provide the vQTL effect (i.e., the effect of a SNP on differences in phenotype variance among genotype groups), computed from z-statistic using the method described in <a href="http://www.nature.com/ng/journal/vaop/ncurrent/full/ng.3538.html">(Zhu et al. 2016 Nature Genetics)</a>. Note that the vQTL z-statistic can be computed from p-value and the sign of the slope of regressing phenotype variance against genotypes.</p>
+<h4 id="basicoption-1"># Basic option</h4>
+<pre><code>osca --vqtl --bfile mydata --pheno mypheno --out myvqtl
+</code></pre>
+<p><strong><span class="kwd">--vqtl</span></strong> to turn a vQTL analysis.</p>
+<p><strong><span class="kwd">--bfile</span></strong> to input SNP genotype data.</p>
+<p><strong><span class="kwd">--pheno</span></strong>  to input phenotype data (see <a href="#OREML">OREML</a> for the input format).</p>
+<p><strong><em>myvqtl.vqtl</em></strong></p>
+<pre><code>Chr    SNP    bp    statistic    df    beta    se    P    NMISS
+21    rs144022851    14589985    2.98808    1    -0.246533    0.142619    8.387947e-02    1319
+21    rs146286292    14592960    2.99122    1    -0.244279    0.141241    8.371710e-02    1319
+21    rs2847443    14595264    2.40285    1    -0.209187    0.134949    1.211141e-01    1319
+21    rs192179023    14600255    0.00383907    1    0.0357931    0.577678    9.505945e-01    1319
+21    rs9984084    14602180    5.21829    2    0.0696413    0.0389252    7.359741e-02    1319
+...                    
+</code></pre>
+<p>This is a text file with headers. Columns are chromosome, SNP, SNP BP, the statistic, degree of freedom, effect size, standard error,  p-value and number of non-missing individuals.</p>
+<h4 id="specifyingthemethodtotestvarianceheterogeneity"># Specifying the method to test variance heterogeneity</h4>
+<pre><code>osca --eqtl --bfile mydata --pheno mypheno --vqtl-mtd 1 --out myvqtl
+</code></pre>
+<p><strong><span class="kwd">--vqtl-mtd</span></strong> to specify the method to test variance heterogeneity. 0 for Bartlett’s test, 1 for Levene’s test with mean, 2 for Levene’s test with median, 3 for Fligner-Killeen test. The default option is 0.</p>
+<p><strong><em>myvqtl.vqtl</em></strong></p>
+<pre><code>Chr    SNP    bp    F-statistic    df1    df2    beta    se    P    NMISS
+21    rs144022851    14589985    2.03194    1    1317    -0.203255    0.142671    0.154261    1319
+21    rs188453282    14591213    1.48959    1    1317    1.21945    0.999626    0.222499    1319
+21    rs146286292    14592960    1.84845    1    1317    -0.192008    0.141303    0.174196    1319
+21    rs2847443    14595264    1.83381    1    1317    -0.182687    0.134978    0.17591    1319
+21    rs192179023    14600255    0.00102531    1    1317    0.018494    0.577679    0.974461    1319
+21    rs9984084    14602180    1.73809    2    1316    0.0526684    0.0389454    0.176259    1319
+...                    
+</code></pre>
+<p>This is a text file with headers. Columns are chromosome, SNP, SNP BP, F-statistic, K-1 degrees of freedom, N-K degrees of freedom, effect size, standard error,  p-value and number of non-missing individuals.</p>
+<h4 id="includingdatamanagementoptions"># Including data management options</h4>
+<pre><code>osca --vqtl --bfile mydata --pheno mypheno --extract-snp mysnp.list --maf 0.01 --out myvqtl
+</code></pre>
+<h4 id="runningvqtlanalysisformolecularphenotypes">#  Running vQTL analysis for molecular phenotypes</h4>
+<pre><code>osca --vqtl --bfile mydata --befile myprofile --out myvqtl
+</code></pre>
+<p><strong><span class="kwd">--befile</span></strong>  to input molecular phenotypes (e.g. DNA methylation or gene expression measures in <a href="#BODformat">BOD format</a>).</p>
+<h4 id="runningvqtlanalysisformolecularphenotypesincisregions">#  Running vQTL analysis for molecular phenotypes in cis-regions</h4>
+<pre><code>osca --vqtl --bfile mydata --befile myprofile --cis-wind 2000 --out myvqtl
+</code></pre>
+<p><strong><span class="kwd">--cis-wind</span></strong>  to define a window centred around the probe to select SNPs for the vQTL analysis. The default value is 2000Kb.</p>
+<p><strong>Note</strong> that vQTL results for molecular traits will be saved in  <a href="#BESDformat">BESD format</a> which can be tansformed to text format using <a href="#QueryaBESDfile">OSCA query</a>.</p>
+<h4 id="multithreadingcomputation-1"># Multi-threading computation</h4>
+<pre><code>osca --vqtl --bfile mydata --befile myprofile --cis-wind 2000 --task-num 1000 --task-id 1 --thread-num 10 --out myvqtl
+</code></pre>
+<h4 id="citation-1">Citation</h4>
+<p>Huanwei Wang, Futao Zhang, Jian Zeng, Yang Wu, Kathryn E. Kemper, Angli Xue, Min Zhang, Joseph E. Powell, Michael E. Goddard, Naomi R. Wray, Peter M. Visscher, Allan F. McRae, Jian Yang (2019) Genotype-by-environment interactions inferred from genetic effects on phenotypic variability in the UK Biobank. <a href="https://www.biorxiv.org/content/early/2019/01/14/519538">bioRxiv 519538; doi: https://doi.org/10.1101/519538</a></p>
+<h2 id="metaanalysisexpand" class="expand">Meta-analysis </h2>
+<hr><h3 id="metaanalysis">Meta-analysis</h3>
+<h4 id="metaforgwassummarydatawithoutsampleoverlap"># Meta for GWAS summary data without sample overlap</h4>
+<pre><code>osca --gwas-flist mygwas.flist --meta --out mymeta
+</code></pre>
+<p><strong><span class="kwd">--meta</span></strong> implements the conventional inverse-variance-weighted meta-analysis meta-analysis assuming all the cohorts are independent. Pleae refer to <a href="https://academic.oup.com/hmg/article/17/R2/R122/2527210">de Bakker PI et al.2008 Hum Mol Genet</a> for the details.</p>
+<p><strong><span class="kwd">--gwas-flist</span></strong> reads a file to get file paths of the GWAS summary data.</p>
+<p><strong><em>mygwas.flist</em></strong></p>
+<pre><code>Height.01.COJO
+Height.02.COJO
+Height.03.COJO
+...                    
+</code></pre>
+<p>This file has no header. </p>
+<p>The input format of the GWAS summary data follows that for GCTA-COJO analysis (
+<a href="http://cnsgenomics.com/software/gcta/#COJO">http://cnsgenomics.com/software/gcta/#COJO</a>).</p>
+<p><strong><em>Height.01.COJO</em></strong></p>
+<pre><code>SNP    A1  A2  freq    b   se  p   n
+rs1001    A   G   0.8493  0.0024  0.0055  0.6653  129850
+rs1002    C   G   0.03606 0.0034  0.0115  0.7659  129799
+rs1003    A   C   0.5128  0.045   0.038   0.2319  129830
+......
+</code></pre>
+<p>Columns are SNP, the effect (coded) allele, the other allele, frequency of the effect allele, effect size, standard error, p-value and sample size. The headers are not keywords and will be omitted by the program. <font color="red">Important: “A1” needs to be the effect allele with “A2” being the other allele and “freq” needs to be the frequency of “A1”</font>. <strong>NOTE: For a case-control study, the effect size should be log(odds ratio) with its corresponding standard error</strong>.</p>
+<h4 id="metaforeqtlsummarydata"># Meta for eQTL summary data</h4>
+<pre><code>osca --besd-flist mybesd.flist --meta --out mymeta
+</code></pre>
+<p><strong><span class="kwd">--besd-flist</span></strong> reads a file to get the full paths of the BESD files.</p>
+<p><strong><em>mybesd.flist</em></strong></p>
+<pre><code>path1/my_besd1
+path2/my_besd2
+path3/my_besd3
+...                   
+</code></pre>
+<p>This file has no header. The eQTL summary data should be in <a href="#BESDformat">BESD formta</a>.</p>
+<hr><h3 id="mecs">MeCS</h3>
+<h4 id="mecsforeqtlsummarydataincorrelatedsamples"># MeCS for eQTL summary data in correlated samples</h4>
+<p>MeCS is a method that only requires summary-level cis-eQTL data to perform a meta-analysis of cis-eQTLs from multiple cohorts (or tissues) with sample overlaps. It estimates the proportion of sample overlap from null SNPs in the cis-regions and meta-analysed the eQTL effects using a generalized least squares approach. The method can be applied to data from genetic studies of molecular phenotypes (e.g. DNA methylation and histone modification).</p>
+<p><strong>NOTE:</strong>  Only the information in the cis-region would be used.</p>
+<pre><code>osca --besd-flist mybesd.flist --mecs --out mymecs
+</code></pre>
+<h2 id="optionsreference">Options Reference</h2>
+<table width="1000" border="0" style="font-family:arial; font-size:14px; align-self:center">
+<tbody><tr> 
+<td align="left"><font color="#993333">--befile</font></td>
+<td align="left">
+reads a DNA methylation (or gene expression) data file in binary format
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--befile-flist</font></td>
+<td align="left">
+reads a file to get the full paths of the binary files
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--beta2m</font></td>
+<td align="left">
+calculates the methylation m value from the methylation beta value
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--blup-probe</font></td>
+<td align="left">
+calculates the BLUP solutions for the probe effects
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--chr</font></td>
+<td align="left">
+specifies a chromosome to select probes
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--covar</font></td>
+<td align="left">
+reads discrete covariates from a plain text file
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--detection-pval-file</font></td>
+<td align="left">
+reads a file that contains DNA methylation detection p-values
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--dpval-mth</font></td>
+<td align="left">
+specifies a method to do quality control with the detection p-values
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--dpval-thresh</font></td>
+<td align="left">
+specifies a threshold of detection p-value
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--efile</font></td>
+<td align="left">
+reads a DNA methylation (or gene expression) data file in plain text format
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--exclude-probe</font></td>
+<td align="left">
+excludes a subset of probes
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--extract-probe</font></td>
+<td align="left">
+extracts a subset of probes
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--from-probe</font></td>
+<td align="left">
+specifies the start probe
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--from-probe-kb</font></td>
+<td align="left">
+specifies the start physical position of the probes
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--gene</font></td>
+<td align="left">
+extracts a gene
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--genes</font></td>
+<td align="left">
+extracts a subset of genes
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--gene-expression</font></td>
+<td align="left">
+indicates gene expression profiles in the file
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--get-mean</font></td>
+<td align="left">
+calculates the mean of each probe
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--get-variance</font></td>
+<td align="left">
+calculates the variance of each probe
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--keep</font></td>
+<td align="left">
+extracts a subset of individuals
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--linear</font></td>
+<td align="left">
+saves linear regression statistics to a plain text file
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--lower-beta</font></td>
+<td align="left">
+removes the DNA methylation probes with the mean beta value smaller than a specified threshold
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--lxpo</font></td>
+<td align="left">
+specifies a percentage of probes to exclude from calculating the ORM
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--m2beta</font></td>
+<td align="left">
+calculates the methylation beta value from the methylation m value
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--make-bod</font></td>
+<td align="left">
+saves DNA methylation (or gene expression) data in binary format
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--make-efile</font></td>
+<td align="left">
+saves the DNA methylation (or gene expression) data in text format
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--make-orm</font></td>
+<td align="left">
+estimates the omics relationship matrix (ORM) and save the lower triangle elements of ORM to binary files
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--make-orm-bin</font></td>
+<td align="left">
+estimates the omics relationship matrix (ORM) and save the lower triangle elements of ORM to binary files
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--make-orm-gz</font></td>
+<td align="left">
+estimates the omics relationship matrix (ORM) and save the lower triangle elements of ORM to compressed plain text files
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--make-tefile</font></td>
+<td align="left">
+saves the DNA methylation (or gene expression) data in transposed text format
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--merge-orm</font></td>
+<td align="left">
+reads multiple ORMs in binary format
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--methylation-m </font></td>
+<td align="left">
+indicates methylation m values in the file
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--methylation-beta</font></td>
+<td align="left">
+indicates methylation beta values in the file
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--mlma</font></td>
+<td align="left">
+initiates an MLM based association analysis including the target probe (the probe to be tested for association) in the ORM
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--mlma-loco</font></td>
+<td align="left">
+initiates an MLM based association analysis with the chromosome where the target probe is located excluded from the ORM
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--mpheno</font></td>
+<td align="left">
+reads a list of comma-delimited trait numbers if the phenotype file contains more than one trait
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--missing-ratio-probe</font></td>
+<td align="left">
+specifies a missing proportion threshold to remove probes
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--no-fid</font></td>
+<td align="left">
+indicates data without family ID
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--orm</font></td>
+<td align="left">
+reads the ORM binary files
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--orm-alg</font></td>
+<td align="left">
+specifies the algorithm to estimate the ORM
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--orm-cutoff</font></td>
+<td align="left">
+removes one of a pair of individuals with estimated omics relationships larger than the specified cut-off value
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--out</font></td>
+<td align="left">
+saves data (or results) in a file
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--pca</font></td>
+<td align="left">
+conducts principal component analysis and saves the first n (default as 20) PCs
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--pheno</font></td>
+<td align="left">
+reads phenotype data from a plain text file
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--probe</font></td>
+<td align="left">
+extracts a specified probe
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--probe-wind</font></td>
+<td align="left">
+defines a window centred on a specified probe
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--probe-rm</font></td>
+<td align="left">
+excludes a specified probe
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--qcovar</font></td>
+<td align="left">
+reads quantitative covariates from a plain text file
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--ratio-probe</font></td>
+<td align="left">
+specifies a proportion threshold to remove probes
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--ratio-sample</font></td>
+<td align="left">
+specifies a proportion threshold to remove individuals
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--reml</font></td>
+<td align="left">
+performs REML (restricted maximum likelihood) analysis
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--reml-alg</font></td>
+<td align="left">
+specifies the algorithm to do REML iterations
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--reml-est-fix</font></td>
+<td align="left">
+displays the estimates of fixed effects on the screen
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--reml-maxit</font></td>
+<td align="left">
+specifies the maximum number of iterations
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--reml-no-lrt</font></td>
+<td align="left">
+turns off the LRT
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--reml-pred-rand</font></td>
+<td align="left">
+predicts the random effects by the BLUP (best linear unbiased prediction) method
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--remove</font></td>
+<td align="left">
+excludes a subset of individuals
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--score</font></td>
+<td align="left">
+reads score files for probes and generates predicted omics profiles for individuals
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--score-has-header</font></td>
+<td align="left">
+indicates probe score file has headers
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--simu-causal-loci</font></td>
+<td align="left">
+reads a list of probes as causal probes
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--simu-cc</font></td>
+<td align="left">
+simulates a case-control trait and specifies the number of cases and the number of controls
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--simu-eff-mod</font></td>
+<td align="left">
+specifies whether or not to standardize the causal probe
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--simu-hsq</font></td>
+<td align="left">
+specifies the proportion of variance in phenotype explained by the causal probes
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--simu-k</font></td>
+<td align="left">
+specifies the disease prevalence. The default value is 0.1 if this option is not specified
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--simu-qt</font></td>
+<td align="left">
+simulates a quantitative trait
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--std</font></td>
+<td align="left">
+removes the probes with the standard deviation smaller than a specified threshold
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--to-probe</font></td>
+<td align="left">
+specifies the end probe
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--to-probe-kb</font></td>
+<td align="left">
+specifies the end physical position of the probes
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--update-opi</font></td>
+<td align="left">
+reads a fully annotated .opi file
+</td>
+</tr>
+<tr> 
+<td align="left"><font color="#993333">--upper-beta</font></td>
+<td align="left">
+removes the DNA methylation probes with the mean beta value larger than a specified threshold
+</td>
+</tr>
+</tbody></table></body></div>
+        </div>
+
+        <script>
+            $(function() {
+                var toc = $("#toc").tocify({
+                    selectors: "h2, h3",
+                    ignoreSelector: ".notoc",
+                    expand: ".expand",
+                    showEffect: "fadeIn",
+                    scrollHistory: false,
+                    extendPage: false,
+                    scrollRef: "#PAGE-header",
+                    showDIV: "#show",
+                    tocID: "#toc"
+                }).data("toc-tocify");
+                toc.setOptions({
+                    appendContents: '<div style="text-align: center;font-size: 14px">Number of visits: <img src="http://hitwebcounter.com/counter/counter.php?page=6713979&style=0030&nbdigits=5&type=page&initCount=0" border="0" width="48"> </div>'
+                });
+                hljs.initHighlightingOnLoad();
+
+            });
+
+            $(function() {
+                setTimeout(function() {
+                    (function(i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function() {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        }, i[r].l = 1 * new Date();
+                        a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+                    ga('create', 'UA-101733990-5', 'auto');
+                    ga('send', 'pageview');
+                }, 2000);
+            });
+        </script>
+    </div>
+
+
+
+
+</body></html>

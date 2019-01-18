@@ -1,7 +1,7 @@
 
 ## Meta-analysis {: .expand}
 
-### Meta-analysis for data without sample overlap
+### Meta-analysis
 
 #### \# Meta for GWAS summary data without sample overlap
 
@@ -52,9 +52,9 @@ path3/my_besd3
 ```
 This file has no header. The eQTL summary data should be in [BESD formta](#BESDformat).
 
-### MeCS (meta analysis in correlated samples)
+### MeCS
 
-#### \# MeCS for eQTL summary data
+#### \# MeCS for eQTL summary data in correlated samples
 
 MeCS is a method that only requires summary-level cis-eQTL data to perform a meta-analysis of cis-eQTLs from multiple cohorts (or tissues) with sample overlaps. It estimates the proportion of sample overlap from null SNPs in the cis-regions and meta-analysed the eQTL effects using a generalized least squares approach. The method can be applied to data from genetic studies of molecular phenotypes (e.g. DNA methylation and histone modification).
 

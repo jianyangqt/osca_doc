@@ -76,9 +76,9 @@ estimated omics relationships larger than the specified cut-off
 value.
 
 ```
-osca --merge-orm myorm.flist --pca 20 --out mypca
+osca --multi-orm myorm.flist --pca 20 --out mypca
 ```
 
-**\--merge-orm** reads multiple ORMs in binary format.
+**\--multi-orm** reads multiple ORMs in binary format.
 
 
