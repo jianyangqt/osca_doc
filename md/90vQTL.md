@@ -76,3 +76,5 @@ osca --vqtl --bfile mydata --befile myprofile --cis-wind 2000 --task-num 1000 --
 
 #### Citation
 Huanwei Wang, Futao Zhang, Jian Zeng, Yang Wu, Kathryn E. Kemper, Angli Xue, Min Zhang, Joseph E. Powell, Michael E. Goddard, Naomi R. Wray, Peter M. Visscher, Allan F. McRae, Jian Yang (2019) Genotype-by-environment interactions inferred from genetic effects on phenotypic variability in the UK Biobank. [bioRxiv 519538; doi: https://doi.org/10.1101/519538](https://www.biorxiv.org/content/early/2019/01/14/519538)
+
+The vQTL summary data for 13 UKB traits are available at [Data Resource](#DataResource)

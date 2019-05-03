@@ -2,25 +2,23 @@
 
 ### About
 
-**OSCA** (OmicS-data-based Complex trait Analysis) is a software tool
-written in C/C++ for the analysis of complex traits using multi-omics
-data. It is developed by [Futao Zhang](http://researchers.uq.edu.au/researcher/12709), [Zhihong Zhu](http://researchers.uq.edu.au/researcher/3051) and [Jian Yang](http://researchers.uq.edu.au/researcher/2713) at Institute for Molecular Bioscience, The University of Queensland. Bug reports or questions: Jian Yang <<jian.yang@uq.edu.au>\>.
+**OSCA** (OmicS-data-based Complex trait Analysis) is a software tool written in C/C++ for the analysis of complex traits using multi-omics data. It is developed by [Futao Zhang](http://researchers.uq.edu.au/researcher/12709) and [Jian Yang](http://researchers.uq.edu.au/researcher/2713) at [Institute for Molecular Bioscience](https://imb.uq.edu.au/), The University of Queensland. Bug reports or questions: Jian Yang <<jian.yang@uq.edu.au>\> or Futao Zhang <<futao.zhang@imb.uq.edu.au>\>.
 
 Functions currently supported are:
 
 -   Estimating the epigenetic (or transcriptomic) relationships between individuals from genome-wide DNA methylation (or gene expression) data.
 
--   Estimating the proportion of phenotypic variance for a complex trait can be "explained" by all DNA methylation (or gene expression) probes.
+-   Estimating the proportion of phenotypic variance for a complex trait that can be captured by all DNA methylation (or gene expression) probes.
 
--   Mixed linear model based analysis to test for associations between DNA methylation (or gene expression) probes and complex traits.
+-   Mixed linear model-based approaches to test for associations between DNA methylation (or gene expression) probes and complex traits (i.e., the MOA and MOMENT methods).
 
--   Estimating the joint "effects" of all methylation (transcription) probes on a phenotype (e.g. BMI) in a mixed linear model (analogous to BLUP). These estimated effects can be used to predict the phenotype in a new independent sample.
+-   Estimating the joint "effects" of all methylation (transcription) probes on a phenotype (e.g. BMI) in a mixed linear model (analogous to BLUP). These estimated effects can be used to "predict" the phenotype in a new independent sample.
 
--   eQTL/mQTL analysis with linear regression model. The model can adjust for the relevant covarites. The results are saved in [BESD format](#BESDformat).
+-   eQTL/mQTL analysis based on a linear regression model with relevant covarites (results saved in [BESD format](#BESDformat)).
 
--   vQTL analysis to test the homogeneity of variance. Three algorithms have been implemented (Bartlett’s test, Levene’s test and Brown–Forsythe test, Fligner-Killeen test). The results are saved in [BESD format](#BESDformat).
+-   vQTL analysis to test for the effects of genetic variants on the variance of a trait. Three algorithms have been implemented (i.e., the Bartlett's test, the Levene's test and the Fligner-Killeen test).
 
-**Note:** Although this software tool is designed for gene expression and DNA methylation data, it can be applied to any other source of omics data including microbiome, proteome and brain connectome.
+**Note:** although this software tool is designed for gene expression and DNA methylation data, it can in principle be applied to any other source of omic data including microbiome, proteome and brain connectome.
 
 
 ### Credits 
@@ -29,11 +27,11 @@ Functions currently supported are:
 
 
 ### Questions and Help Requests 
-Bug reports or questions to Jian Yang (<jian.yang@uq.edu.au>) at
+Bug reports or questions to Jian Yang (<jian.yang@uq.edu.au>)  or Futao Zhang (<futao.zhang@imb.uq.edu.au>) at
 Institute for Molecular Bioscience, The University of Queensland.
 
 
 ### Citation 
 
-Zhang F, Chen W, Zhu Z, Zhang Q, Deary IJ, Wray NR, Visscher PM, McRae AF, Yang J (2018) OSCA: a tool for omic-data-based complex trait analysis. [bioRxiv 445163; doi: https://doi.org/10.1101/445163](https://www.biorxiv.org/content/early/2018/10/17/445163).
+Zhang F, Chen W, Zhu Z, Zhang Q, Nabais, MF, Qi T, Deary IJ, Wray NR, Visscher PM, McRae AF, Yang J (2019) OSCA: a tool for omic-data-based complex trait analysis. [bioRxiv 445163; doi: https://doi.org/10.1101/445163](https://doi.org/10.1101/445163).
 

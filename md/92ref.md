@@ -134,12 +134,6 @@ removes the DNA methylation probes with the mean beta value smaller than a speci
 </td>
 </tr>
 <tr> 
-<td align="left"><font color="#993333">--lxpo</font></td>
-<td align="left">
-specifies a percentage of probes to exclude from calculating the ORM
-</td>
-</tr>
-<tr> 
 <td align="left"><font color="#993333">--m2beta</font></td>
 <td align="left">
 calculates the methylation beta value from the methylation m value
@@ -182,7 +176,7 @@ saves the DNA methylation (or gene expression) data in transposed text format
 </td>
 </tr>
 <tr> 
-<td align="left"><font color="#993333">--merge-orm</font></td>
+<td align="left"><font color="#993333">--multi-orm</font></td>
 <td align="left">
 reads multiple ORMs in binary format
 </td>
@@ -206,9 +200,9 @@ initiates an MLM based association analysis including the target probe (the prob
 </td>
 </tr>
 <tr> 
-<td align="left"><font color="#993333">--mlma-loco</font></td>
+<td align="left"><font color="#993333">--mlma-exact</font></td>
 <td align="left">
-initiates an MLM based association analysis with the chromosome where the target probe is located excluded from the ORM
+initiates an exact approach of MLM based association analysis with the chromosome where the target probe is located excluded from the ORM
 </td>
 </tr>
 <tr> 
@@ -374,7 +368,7 @@ specifies whether or not to standardize the causal probe
 </td>
 </tr>
 <tr> 
-<td align="left"><font color="#993333">--simu-hsq</font></td>
+<td align="left"><font color="#993333">--simu-rsq</font></td>
 <td align="left">
 specifies the proportion of variance in phenotype explained by the causal probes
 </td>

@@ -42,6 +42,12 @@ osca --orm myorm --pca 20 --out mypca
 
 **\--pca** conducts principal component analysis and saves the first n (default as 20) PCs.
 
+Principal components can also be directly computed  from data in [BOD format](#BODformat)
+
+```
+osca --befile myprofile --pca 20 --out mypca
+```
+
 ***mypca.eigenval***
 
 ```

@@ -2,14 +2,13 @@
 ## EWAS {: .expand}
 
 ### MOMENT
-#### \# MOMENT (Multi-cOmponent Mlm-based association ExcludiNg the Target)
+<u>M</u>ulti-c<u>o</u>mponent <u>M</u>LM-based association <u>e</u>xcludi<u>n</u>g the <u>t</u>arget
+
+#### \# MOMENT (approximate approach)
 ```
 osca --moment --befile myprofile --pheno my.phen --out my
 ```
-**\--moment** initiates a multi-component MLM based association analysis excluding
-the target probe (the probe to be tested for association) and the probes in its flanking region from the
-ORM (the size of flanking region can be modified by --moment-wind). The results will be saved in a plain text file with *.mlma.
-as the filename extension.
+**\--moment** runs an approximate MOMENT analysis, i.e., a multi-component MLM based association test excluding the target probe (the probe to be tested for association) and the probes in its flanking region from the ORM (the size of flanking region can be modified by --moment-wind). The probes are classified into two groups by the association statistics (in descending order) from a linear regression analysis. This is an approximate approach in which each target probe is tested using the estimated variance components under the null model. The variance components are only re-estimated when one or more probes in the first group (the group in which the probes have larger linear regression association statistics than those in the other group) are excluded from the ORMs. The results will be saved in a plain text file (*.moment).
 
 ```
 osca --moment --befile myprofile --pheno my.phen --moment-wind 100 --out my
@@ -27,24 +26,20 @@ Chr    Probe   bp  Gene    Orientation b   se  p
 This is a text file with headers. Columns are chromosome, probe, probe
 BP, gene, orientation, effect size, standard error and p-value.
 
-**NOTE:** Sometimes the MLM estimation process in the EWAS analysis does not work (the REML iteration cannot converge or an estimate hits the boundaries of parameter space) especially when the sample size is small. In such case we switch MLMA to standard PC based linear regression analysis. We have implemented a strategy to identify the number of PCs iteratively until the genomic inflation factor (lambda value) falls into a user-defined range, or the number of PCs reaches the lower (0) or upper boundary (half of the sample size). The range size for lambda can be specified by the option **\--lambda-range**
 
-
+#### \# MOMENT (exact approach)
 ```
-osca --moment --befile myprofile --pheno my.phen --lambda-range 0.05 --out my
+osca --moment-exact --befile myprofile --pheno my.phen --out my
 ```
-**\--lambda-range** specifies a range for the lambda value. The default value is 0.05. This option only works when the MLM estimation process fails.
+**\--moment-exact** runs an exact MOMENT test. This is similar to the method above (window size can also be modified by --moment-wind) but the variance components are re-estimated for each target probe.
 
-**NOTE:** The analysis becomes slower as the number of PCs becomes larger. The option **\--fast-linear** can accelerate the analysis by pre-adjusting both the trait and gene expression (or DNA methylation) value by the PCs. In this case, all the missing gene expression (or DNA methylation) values will be replaced by the mean. It should be noted that if the proportion of missing values in the gene expression (or DNA methylation) data is large, this accelerated analysis may lead to substantial differences in results.
 
-```
-osca --moment --befile myprofile --pheno my.phen --fast-linear --out my
-```
-**\--fast-linear** runs a fast linear regression analysis. This flag can also be used in the [Fast Linear Regression analysis module](#FastLinearRegression)
-
+**NOTE:** Sometimes the MLM estimation process in the EWAS analysis does not work (the REML iteration cannot converge or an estimate hits the boundaries of parameter space) especially when the sample size is small. In such case MLM will be terminated. 
 
 ### MOA
-#### \# MOA (MLM-based Omic Association)
+<u>M</u>LM-based <u>o</u>mic <u>a</u>ssociation
+
+#### \# MOA (approximate approach)
 ```
 osca --moa --befile myprofile --pheno my.phen --out my
 ```
@@ -54,10 +49,19 @@ If you have already computed the ORM
 ```
 osca --moa --befile myprofile --pheno my.phen --orm myorm --out my
 ```
-**\--moa** initiates an MLM based association analysis including
-the target probe (the probe to be tested for association) in the
-ORM. The results will be saved in a plain text file with **.mlma**
-as the filename extension.
+**\--moa** run an approximate MOA analysis, i.e., an MLM based association test including the target probe in the ORM. This an approximate approach in which each target probe is tested using the variance components estimated under the null model. The results will be saved in a plain text file (*.moa).
+
+#### \# MOA (exact approach)
+```
+osca --moa-exact --befile myprofile --pheno my.phen --out my
+```
+**\--moa-exact** runs an exact MOA test. 
+
+Multi-threading computation
+
+```
+osca --moa-exact --befile myprofile --pheno my.phen --task-num 1000 --task-id 1 --thread-num 10 --out my
+```
 
 ### Linear Regression
 
@@ -128,11 +132,11 @@ probe, b<sub>i</sub> is the effect of the i-th causal probe and ε \~ N(0,var(
 sum(x<sub>i</sub>b<sub>i</sub>))(1/h<sup>2</sup>-1) ) is a vector of residual effect.
 
 ```
-osca --simu-qt --simu-hsq 0.1 --befile myprofile --simu-causal-loci mycausal.list --out mypheno
+osca --simu-qt --simu-rsq 0.1 --befile myprofile --simu-causal-loci mycausal.list --out mypheno
 ```
 **\--simu-qt** smulates a quantitative trait.
 
-**\--simu-hsq** specifies the proportion of variance in phenotype
+**\--simu-rsq** specifies the proportion of variance in phenotype
 explained by the causal probes. The default value is 0.1.
 
 **\--simu-causal-loci** reads a list of probes as causal probes. If
