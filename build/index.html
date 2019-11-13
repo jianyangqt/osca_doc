@@ -48,28 +48,26 @@
             </div>
             <div id="content" class="span9" style="display: none;"><body><h2 id="overviewexpand" class="expand">Overview </h2>
 <hr><h3 id="about">About</h3>
-<p><strong>OSCA</strong> (OmicS-data-based Complex trait Analysis) is a software tool
-written in C/C++ for the analysis of complex traits using multi-omics
-data. It is developed by <a href="http://researchers.uq.edu.au/researcher/12709">Futao Zhang</a>, <a href="http://researchers.uq.edu.au/researcher/3051">Zhihong Zhu</a> and <a href="http://researchers.uq.edu.au/researcher/2713">Jian Yang</a> at Institute for Molecular Bioscience, The University of Queensland. Bug reports or questions: Jian Yang &lt;<a href="mailto:jian.yang@uq.edu.au">jian.yang@uq.edu.au</a>&gt;.</p>
+<p><strong>OSCA</strong> (OmicS-data-based Complex trait Analysis) is a software tool written in C/C++ for the analysis of complex traits using multi-omics data. It is developed by <a href="http://researchers.uq.edu.au/researcher/12709">Futao Zhang</a> and <a href="http://researchers.uq.edu.au/researcher/2713">Jian Yang</a> at <a href="https://imb.uq.edu.au/">Institute for Molecular Bioscience</a>, The University of Queensland. Bug reports or questions: Jian Yang &lt;<a href="mailto:jian.yang@uq.edu.au">jian.yang@uq.edu.au</a>&gt; or Futao Zhang &lt;<a href="mailto:futao.zhang@imb.uq.edu.au">futao.zhang@imb.uq.edu.au</a>&gt;.</p>
 <p>Functions currently supported are:</p>
 <ul>
 <li><p>Estimating the epigenetic (or transcriptomic) relationships between individuals from genome-wide DNA methylation (or gene expression) data.</p></li>
-<li><p>Estimating the proportion of phenotypic variance for a complex trait can be "explained" by all DNA methylation (or gene expression) probes.</p></li>
-<li><p>Mixed linear model based analysis to test for associations between DNA methylation (or gene expression) probes and complex traits.</p></li>
-<li><p>Estimating the joint "effects" of all methylation (transcription) probes on a phenotype (e.g. BMI) in a mixed linear model (analogous to BLUP). These estimated effects can be used to predict the phenotype in a new independent sample.</p></li>
-<li><p>eQTL/mQTL analysis with linear regression model. The model can adjust for the relevant covarites. The results are saved in <a href="#BESDformat">BESD format</a>.</p></li>
-<li><p>vQTL analysis to test the homogeneity of variance. Three algorithms have been implemented (Bartlett’s test, Levene’s test and Brown–Forsythe test, Fligner-Killeen test). The results are saved in <a href="#BESDformat">BESD format</a>.</p></li>
+<li><p>Estimating the proportion of phenotypic variance for a complex trait that can be captured by all DNA methylation (or gene expression) probes.</p></li>
+<li><p>Mixed linear model-based approaches to test for associations between DNA methylation (or gene expression) probes and complex traits (i.e., the MOA and MOMENT methods).</p></li>
+<li><p>Estimating the joint "effects" of all methylation (transcription) probes on a phenotype (e.g. BMI) in a mixed linear model (analogous to BLUP). These estimated effects can be used to "predict" the phenotype in a new independent sample.</p></li>
+<li><p>eQTL/mQTL analysis based on a linear regression model with relevant covarites (results saved in <a href="#BESDformat">BESD format</a>).</p></li>
+<li><p>vQTL analysis to test for the effects of genetic variants on the variance of a trait. Three algorithms have been implemented (i.e., the Bartlett's test, the Levene's test and the Fligner-Killeen test).</p></li>
 </ul>
-<p><strong>Note:</strong> Although this software tool is designed for gene expression and DNA methylation data, it can be applied to any other source of omics data including microbiome, proteome and brain connectome.</p>
+<p><strong>Note:</strong> although this software tool is designed for gene expression and DNA methylation data, it can in principle be applied to any other source of omic data including microbiome, proteome and brain connectome.</p>
 <hr><h3 id="credits">Credits</h3>
 <p><a href="http://researchers.uq.edu.au/researcher/12709">Futao Zhang</a> and <a href="http://researchers.uq.edu.au/researcher/2713">Jian Yang</a> developed the methods, software and webpage. <a href="http://researchers.uq.edu.au/researcher/3051">Zhihong Zhu</a> contributed to the development of the ORM and OREML methods. <a href="http://researchers.uq.edu.au/researcher/15871">Ting Qi</a> contributed to MeCS method. <a href="mailto:huanwei.wang@imb.uq.edu.au">Huanwei Wang</a> contributed to vQTL method. <a href="mailto:zhili.zheng@imb.uq.edu.au">Zhili Zheng</a> provided the template of the website.</p>
 <hr><h3 id="questionsandhelprequests">Questions and Help Requests</h3>
-<p>Bug reports or questions to Jian Yang (<a href="mailto:jian.yang@uq.edu.au">jian.yang@uq.edu.au</a>) at
+<p>Bug reports or questions to Jian Yang (<a href="mailto:jian.yang@uq.edu.au">jian.yang@uq.edu.au</a>)  or Futao Zhang (<a href="mailto:futao.zhang@imb.uq.edu.au">futao.zhang@imb.uq.edu.au</a>) at
 Institute for Molecular Bioscience, The University of Queensland.</p>
 <hr><h3 id="citation">Citation</h3>
-<p>Zhang F, Chen W, Zhu Z, Zhang Q, Deary IJ, Wray NR, Visscher PM, McRae AF, Yang J (2018) OSCA: a tool for omic-data-based complex trait analysis. <a href="https://www.biorxiv.org/content/early/2018/10/17/445163">bioRxiv 445163; doi: https://doi.org/10.1101/445163</a>.</p>
+<p>Zhang F, Chen W, Zhu Z, Zhang Q, Nabais, MF, Qi T, Deary IJ, Wray NR, Visscher PM, McRae AF, Yang J (2019) OSCA: a tool for omic-data-based complex trait analysis. <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1718-z"><em>Genome Biol, 20:107</em></a>.</p>
 <h2 id="downloadexpand" class="expand">Download </h2>
-<hr><h3 id="executablefilesversion043">Executable Files (version 0.43)</h3>
+<hr><h3 id="executablefilesversion045">Executable Files (version 0.45)</h3>
 <p>The Linux version is available at:
 <a href="./download/osca_Linux.zip">osca_Linux.zip</a>.</p>
 <p>The MacOS version is available at:
@@ -79,6 +77,8 @@ Institute for Molecular Bioscience, The University of Queensland.</p>
 <p>The example files are in <a href="./download/example.zip">example.zip</a>.</p>
 <p>The executable files (binary code) are release under MIT lincense.</p>
 <hr><h3 id="updatelog">Update log</h3>
+<p><strong>8.</strong> Version 0.45 (17 June, 2019): released a beta version of MOMENT2.</p>
+<p><strong>7.</strong> &nbsp;Version 0.44 (3 May, 2019): updated the PCA function and released the exact MOA and MOMENT approaches (more accurate but computationally less efficient than the default approximate approaches).</p>
 <p><strong>6.</strong> &nbsp;Version 0.43 (18 January, 2019): added a function to run a  variance quantitative trait locus (vQTL) analysis.</p>
 <p><strong>6.</strong> &nbsp;Version 0.42 (29 November, 2018): added an efficient function to run a mixed-linear-model-based cis-eQTL analysis.</p>
 <p><strong>5.</strong> &nbsp;Version 0.41 (22 October, 2018): added logistic regression in EWAS analysis.</p>
@@ -517,6 +517,9 @@ source of omics data mentioned above.</p>
 </code></pre>
 <p><strong><span class="kwd">--orm</span></strong> reads the ORM binary files.</p>
 <p><strong><span class="kwd">--pca</span></strong> conducts principal component analysis and saves the first n (default as 20) PCs.</p>
+<p>Principal components can also be directly computed  from data in <a href="#BODformat">BOD format</a></p>
+<pre><code>osca --befile myprofile --pca 20 --out mypca
+</code></pre>
 <p><strong><em>mypca.eigenval</em></strong></p>
 <pre><code>122.014
 95.3064
@@ -604,13 +607,11 @@ screen.</p>
 <p><strong><span class="kwd">--reml-no-lrt</span></strong> turns off the LRT.</p>
 <h2 id="ewasexpand" class="expand">EWAS </h2>
 <hr><h3 id="moment">MOMENT</h3>
-<h4 id="momentmulticomponentmlmbasedassociationexcludingthetarget"># MOMENT (Multi-cOmponent Mlm-based association ExcludiNg the Target)</h4>
+<p><u>M</u>ulti-c<u>o</u>mponent <u>M</u>LM-based association <u>e</u>xcludi<u>n</u>g the <u>t</u>arget</p>
+<h4 id="momentapproximateapproach"># MOMENT (approximate approach)</h4>
 <pre><code>osca --moment --befile myprofile --pheno my.phen --out my
 </code></pre>
-<p><strong><span class="kwd">--moment</span></strong> initiates a multi-component MLM based association analysis excluding
-the target probe (the probe to be tested for association) and the probes in its flanking region from the
-ORM (the size of flanking region can be modified by <span class="kwd">--moment-wind</span>). The results will be saved in a plain text file with *.mlma.
-as the filename extension.</p>
+<p><strong><span class="kwd">--moment</span></strong> runs an approximate MOMENT analysis, i.e., a multi-component MLM based association test excluding the target probe (the probe to be tested for association) and the probes in its flanking region from the ORM (the size of flanking region can be modified by <span class="kwd">--moment-wind</span>). The probes are classified into two groups by the association statistics (in descending order) from a linear regression analysis. This is an approximate approach in which each target probe is tested using the estimated variance components under the null model. The variance components are only re-estimated when one or more probes in the first group (the group in which the probes have larger linear regression association statistics than those in the other group) are excluded from the ORMs. The results will be saved in a plain text file (*.moment).</p>
 <pre><code>osca --moment --befile myprofile --pheno my.phen --moment-wind 100 --out my
 </code></pre>
 <p><strong><span class="kwd">--moment-wind</span></strong> specifies a flanking region to exclude probes from the ORM. The default value is 100 Kb (i.e. a 100 Kb region centred at the probe to be tested).</p>
@@ -623,25 +624,32 @@ as the filename extension.</p>
 </code></pre>
 <p>This is a text file with headers. Columns are chromosome, probe, probe
 BP, gene, orientation, effect size, standard error and p-value.</p>
-<p><strong>NOTE:</strong> Sometimes the MLM estimation process in the EWAS analysis does not work (the REML iteration cannot converge or an estimate hits the boundaries of parameter space) especially when the sample size is small. In such case we switch MLMA to standard PC based linear regression analysis. We have implemented a strategy to identify the number of PCs iteratively until the genomic inflation factor (lambda value) falls into a user-defined range, or the number of PCs reaches the lower (0) or upper boundary (half of the sample size). The range size for lambda can be specified by the option <strong><span class="kwd">--lambda-range</span></strong></p>
-<pre><code>osca --moment --befile myprofile --pheno my.phen --lambda-range 0.05 --out my
+<h4 id="moment2betaversion"># MOMENT2 ( beta version)</h4>
+<p>In MOMENT, the probes are divided into two groups by their association p-values generated by linear regression (note: the default threshold p-value is 0.05 / m with m being the total number of probes) and fitted as two random-effect components in the model to control for unobserved confounding effects (<a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1718-z"><em>Zhang et al. 2019 Genome Biology</em></a>). When the number of probes in the first group is too large, the analysis will become slow because the program needs to re-estimate the variance components whenever one or more probes are removed from the first group (to avoid proximity contamination; see <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1718-z"><em>Zhang et al.</em></a> for details). This may also cause convergence problem because of too much variation explained by the first random-effect component. In MOMENT2, a stepwise selection procedure is implemented to reduce the number of probes in the first group. Simulation shows that MOMENT2 has approximately the same level of false positive rate but slightly higher power compared to MOMENT. MOMENT2 is also expected to be faster than MOMENT especially when the number of associated probes detected by linear regression is large.</p>
+<pre><code>osca --moment2-beta --befile myprofile --pheno my.phen --out my
 </code></pre>
-<p><strong><span class="kwd">--lambda-range</span></strong> specifies a range for the lambda value. The default value is 0.05. This option only works when the MLM estimation process fails.</p>
-<p><strong>NOTE:</strong> The analysis becomes slower as the number of PCs becomes larger. The option <strong><span class="kwd">--fast-linear</span></strong> can accelerate the analysis by pre-adjusting both the trait and gene expression (or DNA methylation) value by the PCs. In this case, all the missing gene expression (or DNA methylation) values will be replaced by the mean. It should be noted that if the proportion of missing values in the gene expression (or DNA methylation) data is large, this accelerated analysis may lead to substantial differences in results.</p>
-<pre><code>osca --moment --befile myprofile --pheno my.phen --fast-linear --out my
+<p><strong><span class="kwd">--moment2-beta</span></strong> runs a MOMENT2 analysis.</p>
+<h4 id="momentexactapproach"># MOMENT (exact approach)</h4>
+<pre><code>osca --moment-exact --befile myprofile --pheno my.phen --out my
 </code></pre>
-<p><strong><span class="kwd">--fast-linear</span></strong> runs a fast linear regression analysis. This flag can also be used in the <a href="#FastLinearRegression">Fast Linear Regression analysis module</a></p>
+<p><strong><span class="kwd">--moment-exact</span></strong> runs an exact MOMENT test. This is similar to the method above (window size can also be modified by <span class="kwd">--moment-wind</span>) but the variance components are re-estimated for each target probe.</p>
+<p><strong>NOTE:</strong> Sometimes the MLM estimation process in the EWAS analysis does not work (the REML iteration cannot converge or an estimate hits the boundaries of parameter space) especially when the sample size is small. In such case MLM will be terminated. </p>
 <hr><h3 id="moa">MOA</h3>
-<h4 id="moamlmbasedomicassociation"># MOA (MLM-based Omic Association)</h4>
+<p><u>M</u>LM-based <u>o</u>mic <u>a</u>ssociation</p>
+<h4 id="moaapproximateapproach"># MOA (approximate approach)</h4>
 <pre><code>osca --moa --befile myprofile --pheno my.phen --out my
 </code></pre>
 <p>If you have already computed the ORM</p>
 <pre><code>osca --moa --befile myprofile --pheno my.phen --orm myorm --out my
 </code></pre>
-<p><strong><span class="kwd">--moa</span></strong> initiates an MLM based association analysis including
-the target probe (the probe to be tested for association) in the
-ORM. The results will be saved in a plain text file with <strong>.mlma</strong>
-as the filename extension.</p>
+<p><strong><span class="kwd">--moa</span></strong> run an approximate MOA analysis, i.e., an MLM based association test including the target probe in the ORM. This an approximate approach in which each target probe is tested using the variance components estimated under the null model. The results will be saved in a plain text file (*.moa).</p>
+<h4 id="moaexactapproach"># MOA (exact approach)</h4>
+<pre><code>osca --moa-exact --befile myprofile --pheno my.phen --out my
+</code></pre>
+<p><strong><span class="kwd">--moa-exact</span></strong> runs an exact MOA test. </p>
+<p>Multi-threading computation</p>
+<pre><code>osca --moa-exact --befile myprofile --pheno my.phen --task-num 1000 --task-id 1 --thread-num 10 --out my
+</code></pre>
 <hr><h3 id="linearregression">Linear Regression</h3>
 <pre><code>osca --befile myprofile --pheno my.phen --linear --out my
 </code></pre>
@@ -687,10 +695,10 @@ a vector of phenotypes, x<sub>i</sub> is a vector of raw DNA methylation (or gen
 expression) profile or standardized profile of the i-th "causal"
 probe, b<sub>i</sub> is the effect of the i-th causal probe and ε ~ N(0,var(
 sum(x<sub>i</sub>b<sub>i</sub>))(1/h<sup>2</sup>-1) ) is a vector of residual effect.</p>
-<pre><code>osca --simu-qt --simu-hsq 0.1 --befile myprofile --simu-causal-loci mycausal.list --out mypheno
+<pre><code>osca --simu-qt --simu-rsq 0.1 --befile myprofile --simu-causal-loci mycausal.list --out mypheno
 </code></pre>
 <p><strong><span class="kwd">--simu-qt</span></strong> smulates a quantitative trait.</p>
-<p><strong><span class="kwd">--simu-hsq</span></strong> specifies the proportion of variance in phenotype
+<p><strong><span class="kwd">--simu-rsq</span></strong> specifies the proportion of variance in phenotype
 explained by the causal probes. The default value is 0.1.</p>
 <p><strong><span class="kwd">--simu-causal-loci</span></strong> reads a list of probes as causal probes. If
 the effect sizes are not specified in the file, they will be
@@ -868,6 +876,7 @@ The score should be:
 </code></pre>
 <h4 id="citation-1">Citation</h4>
 <p>Huanwei Wang, Futao Zhang, Jian Zeng, Yang Wu, Kathryn E. Kemper, Angli Xue, Min Zhang, Joseph E. Powell, Michael E. Goddard, Naomi R. Wray, Peter M. Visscher, Allan F. McRae, Jian Yang (2019) Genotype-by-environment interactions inferred from genetic effects on phenotypic variability in the UK Biobank. <a href="https://www.biorxiv.org/content/early/2019/01/14/519538">bioRxiv 519538; doi: https://doi.org/10.1101/519538</a></p>
+<p>The vQTL summary data for 13 UKB traits are available at <a href="#DataResource">Data Resource</a></p>
 <h2 id="metaanalysisexpand" class="expand">Meta-analysis </h2>
 <hr><h3 id="metaanalysis">Meta-analysis</h3>
 <h4 id="metaforgwassummarydatawithoutsampleoverlap"># Meta for GWAS summary data without sample overlap</h4>
@@ -1044,12 +1053,6 @@ removes the DNA methylation probes with the mean beta value smaller than a speci
 </td>
 </tr>
 <tr> 
-<td align="left"><font color="#993333">--lxpo</font></td>
-<td align="left">
-specifies a percentage of probes to exclude from calculating the ORM
-</td>
-</tr>
-<tr> 
 <td align="left"><font color="#993333">--m2beta</font></td>
 <td align="left">
 calculates the methylation beta value from the methylation m value
@@ -1092,7 +1095,7 @@ saves the DNA methylation (or gene expression) data in transposed text format
 </td>
 </tr>
 <tr> 
-<td align="left"><font color="#993333">--merge-orm</font></td>
+<td align="left"><font color="#993333">--multi-orm</font></td>
 <td align="left">
 reads multiple ORMs in binary format
 </td>
@@ -1116,9 +1119,9 @@ initiates an MLM based association analysis including the target probe (the prob
 </td>
 </tr>
 <tr> 
-<td align="left"><font color="#993333">--mlma-loco</font></td>
+<td align="left"><font color="#993333">--mlma-exact</font></td>
 <td align="left">
-initiates an MLM based association analysis with the chromosome where the target probe is located excluded from the ORM
+initiates an exact approach of MLM based association analysis with the chromosome where the target probe is located excluded from the ORM
 </td>
 </tr>
 <tr> 
@@ -1284,7 +1287,7 @@ specifies whether or not to standardize the causal probe
 </td>
 </tr>
 <tr> 
-<td align="left"><font color="#993333">--simu-hsq</font></td>
+<td align="left"><font color="#993333">--simu-rsq</font></td>
 <td align="left">
 specifies the proportion of variance in phenotype explained by the causal probes
 </td>
@@ -1331,7 +1334,12 @@ reads a fully annotated .opi file
 removes the DNA methylation probes with the mean beta value larger than a specified threshold
 </td>
 </tr>
-</tbody></table></body></div>
+</tbody></table>
+<h2 id="dataresourceexpand" class="expand">Data Resource </h2>
+<hr><h3 id="vqtlsummarydata">vQTL summary data</h3>
+<h4 id="vqtlsummarydatafor13ukbtraits"># vQTL summary data for 13 UKB traits</h4>
+<p><a href="https://www.biorxiv.org/content/early/2019/01/14/519538">Wang et al.</a> performed a genome-wide variance quantitative trait locus (vQTL) analysis of ~5.6 million variants on 348,501 unrelated individuals of European ancestry for 13 quantitative traits in the UK Biobank using median-based Levene’s method implemented by OSCA. </p>
+<p>vQTL summary data for 13 UKB traits in <a href="http://cnsgenomics.com/software/gcta/#COJO">COJO format</a>:   <a href="http://cnsgenomics.com/data/OSCA/13-QT-vQTL-summary-data.zip">13-QT-vQTL-summary-data.zip</a> (1.4 GB)<br></p></body></div>
         </div>
 
         <script>

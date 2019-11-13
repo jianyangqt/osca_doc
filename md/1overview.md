@@ -33,5 +33,5 @@ Institute for Molecular Bioscience, The University of Queensland.
 
 ### Citation 
 
-Zhang F, Chen W, Zhu Z, Zhang Q, Nabais, MF, Qi T, Deary IJ, Wray NR, Visscher PM, McRae AF, Yang J (2019) OSCA: a tool for omic-data-based complex trait analysis. [bioRxiv 445163; doi: https://doi.org/10.1101/445163](https://doi.org/10.1101/445163).
+Zhang F, Chen W, Zhu Z, Zhang Q, Nabais, MF, Qi T, Deary IJ, Wray NR, Visscher PM, McRae AF, Yang J (2019) OSCA: a tool for omic-data-based complex trait analysis. [*Genome Biol, 20:107*](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1718-z).
 

@@ -1,6 +1,6 @@
 
 ## Download {: .expand}
-### Executable Files (version 0.44) 
+### Executable Files (version 0.45) 
 
 The Linux version is available at:
 [osca\_Linux.zip](./download/osca_Linux.zip).
@@ -16,6 +16,8 @@ The example files are in [example.zip](./download/example.zip).
 The executable files (binary code) are release under MIT lincense.
 
 ### Update log 
+
+**8.** Version 0.45 (17 June, 2019): released a beta version of MOMENT2.
 
 **7.**  Version 0.44 (3 May, 2019): updated the PCA function and released the exact MOA and MOMENT approaches (more accurate but computationally less efficient than the default approximate approaches).
 
