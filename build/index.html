@@ -76,7 +76,13 @@ Institute for Molecular Bioscience, The University of Queensland.</p>
 <a href="./download/osca_Win.zip">osca_Win.zip</a>.</p>
 <p>The example files are in <a href="./download/example.zip">example.zip</a>.</p>
 <p>The executable files (binary code) are release under MIT lincense.</p>
+<hr><h3 id="sourcecodeversion045">Source code (version 0.45)</h3>
+<p><a href="./download/osca_0.45_src.zip">osca_0.45.zip</a>.</p>
+<p>The source code is released under GPL v2.</p>
 <hr><h3 id="updatelog">Update log</h3>
+<!---
+**9.** Version 0.46 (4 March, 2020): updated MOMENT / MOMENT2 with correlation-based method to exclude the target probe and its highly correlated probes.
+--->
 <p><strong>8.</strong> Version 0.45 (17 June, 2019): released a beta version of MOMENT2.</p>
 <p><strong>7.</strong> &nbsp;Version 0.44 (3 May, 2019): updated the PCA function and released the exact MOA and MOMENT approaches (more accurate but computationally less efficient than the default approximate approaches).</p>
 <p><strong>6.</strong> &nbsp;Version 0.43 (18 January, 2019): added a function to run a  variance quantitative trait locus (vQTL) analysis.</p>
@@ -629,6 +635,14 @@ BP, gene, orientation, effect size, standard error and p-value.</p>
 <pre><code>osca --moment2-beta --befile myprofile --pheno my.phen --out my
 </code></pre>
 <p><strong><span class="kwd">--moment2-beta</span></strong> runs a MOMENT2 analysis.</p>
+<!---
+When the chromosome or the position information is unknown for some kinds of data such as Microbiome, MRI (Magnetic resonance imaging), etc., MOMENT / MOMENT2 will automatically switch window-based method to correlation-based method to exclude the target probe and its highly correlated probes. The correlation-based method can be also specified to run by --moment-cor and the default correlation R-squared threshold is 0.6 which can be modified by --cor-r2.
+<pre><code>osca --moment2-beta --befile myprofile --pheno my.phen --moment-cor --cor-r2 0.6 --out my
+</code></pre>
+**\--moment-cor** runs a correlation-based method to exclude the target probe and its highly correlated probes.
+
+**\--cor-r2** specifies a correlation r2 to select highly correlated probes with the target probe. The default value is 0.6. 
+--->
 <h4 id="momentexactapproach"># MOMENT (exact approach)</h4>
 <pre><code>osca --moment-exact --befile myprofile --pheno my.phen --out my
 </code></pre>

@@ -34,6 +34,16 @@ osca --moment2-beta --befile myprofile --pheno my.phen --out my
 ```
 **\--moment2-beta** runs a MOMENT2 analysis.
 
+<!---
+When the chromosome or the position information is unknown for some kinds of data such as Microbiome, MRI (Magnetic resonance imaging), etc., MOMENT / MOMENT2 will automatically switch window-based method to correlation-based method to exclude the target probe and its highly correlated probes. The correlation-based method can be also specified to run by --moment-cor and the default correlation R-squared threshold is 0.6 which can be modified by --cor-r2.
+
+```
+osca --moment2-beta --befile myprofile --pheno my.phen --moment-cor --cor-r2 0.6 --out my
+```
+**\--moment-cor** runs a correlation-based method to exclude the target probe and its highly correlated probes.
+
+**\--cor-r2** specifies a correlation r2 to select highly correlated probes with the target probe. The default value is 0.6. 
+--->
 #### \# MOMENT (exact approach)
 ```
 osca --moment-exact --befile myprofile --pheno my.phen --out my

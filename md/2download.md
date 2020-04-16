@@ -15,7 +15,16 @@ The example files are in [example.zip](./download/example.zip).
 
 The executable files (binary code) are release under MIT lincense.
 
+### Source code (version 0.45) 
+[osca\_0.45.zip](./download/osca_0.45_src.zip).
+
+The source code is released under GPL v2.
+
 ### Update log 
+
+<!---
+**9.** Version 0.46 (4 March, 2020): updated MOMENT / MOMENT2 with correlation-based method to exclude the target probe and its highly correlated probes.
+--->
 
 **8.** Version 0.45 (17 June, 2019): released a beta version of MOMENT2.
 
