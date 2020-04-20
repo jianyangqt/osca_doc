@@ -2,7 +2,7 @@
 
 ### About
 
-**OSCA** (OmicS-data-based Complex trait Analysis) is a software tool written in C/C++ for the analysis of complex traits using multi-omics data. It is developed by [Futao Zhang](http://researchers.uq.edu.au/researcher/12709) and [Jian Yang](http://researchers.uq.edu.au/researcher/2713) at [Institute for Molecular Bioscience](https://imb.uq.edu.au/), The University of Queensland. Bug reports or questions: Jian Yang <<jian.yang@uq.edu.au>\> or Futao Zhang <<futao.zhang@imb.uq.edu.au>\>.
+**OSCA** (OmicS-data-based Complex trait Analysis) is a software tool written in C/C++ for the analysis of complex traits using multi-omics data. It is developed by [Futao Zhang](https://scholar.google.com/citations?user=lXCr6p4AAAAJ&hl=en&oi=ao) and [Jian Yang](http://researchers.uq.edu.au/researcher/2713) at [Institute for Molecular Bioscience](https://imb.uq.edu.au/), The University of Queensland. Bug reports or questions: Jian Yang <<jian.yang.qt@gmail.com>\> or Futao Zhang <<futoaz@gmail.com>\>.
 
 Functions currently supported are:
 
@@ -23,11 +23,11 @@ Functions currently supported are:
 
 ### Credits 
 
-[Futao Zhang](http://researchers.uq.edu.au/researcher/12709) and [Jian Yang](http://researchers.uq.edu.au/researcher/2713) developed the methods, software and webpage. [Zhihong Zhu](http://researchers.uq.edu.au/researcher/3051) contributed to the development of the ORM and OREML methods. [Ting Qi](http://researchers.uq.edu.au/researcher/15871) contributed to MeCS method. [Huanwei Wang](mailto:huanwei.wang@imb.uq.edu.au) contributed to vQTL method. [Zhili Zheng](mailto:zhili.zheng@imb.uq.edu.au) provided the template of the website.
+[Futao Zhang](https://scholar.google.com/citations?user=lXCr6p4AAAAJ&hl=en&oi=ao) and [Jian Yang](http://researchers.uq.edu.au/researcher/2713) developed the methods, software and webpage. [Zhihong Zhu](http://researchers.uq.edu.au/researcher/3051) contributed to the development of the ORM and OREML methods. [Ting Qi](http://researchers.uq.edu.au/researcher/15871) contributed to MeCS method. [Huanwei Wang](mailto:huanwei.wang@imb.uq.edu.au) contributed to vQTL method. [Zhili Zheng](mailto:zhili.zheng@imb.uq.edu.au) provided the template of the website.
 
 
 ### Questions and Help Requests 
-Bug reports or questions to Jian Yang (<jian.yang@uq.edu.au>)  or Futao Zhang (<futao.zhang@imb.uq.edu.au>) at
+Bug reports or questions to Jian Yang (<jian.yang.qt@gmail.com>)  or Futao Zhang (<futoaz@gmail.com>) at
 Institute for Molecular Bioscience, The University of Queensland.
 
 
