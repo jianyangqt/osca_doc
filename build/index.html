@@ -856,7 +856,7 @@ The score should be:
 </code></pre>
 <p>This is a text file with headers. Columns are chromosome, SNP, SNP BP, the statistic, degree of freedom, effect size, standard error,  p-value and number of non-missing individuals.</p>
 <h4 id="specifyingthemethodtotestvarianceheterogeneity"># Specifying the method to test variance heterogeneity</h4>
-<pre><code>osca --eqtl --bfile mydata --pheno mypheno --vqtl-mtd 1 --out myvqtl
+<pre><code>osca --vqtl --bfile mydata --pheno mypheno --vqtl-mtd 1 --out myvqtl
 </code></pre>
 <p><strong><span class="kwd">--vqtl-mtd</span></strong> to specify the method to test variance heterogeneity. 0 for Bartlett’s test, 1 for Levene’s test with mean, 2 for Levene’s test with median, 3 for Fligner-Killeen test. The default option is 0.</p>
 <p><strong><em>myvqtl.vqtl</em></strong></p>

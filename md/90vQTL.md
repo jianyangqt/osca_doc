@@ -30,7 +30,7 @@ This is a text file with headers. Columns are chromosome, SNP, SNP BP, the stati
 #### \# Specifying the method to test variance heterogeneity
 
 ```
-osca --eqtl --bfile mydata --pheno mypheno --vqtl-mtd 1 --out myvqtl
+osca --vqtl --bfile mydata --pheno mypheno --vqtl-mtd 1 --out myvqtl
 ```
 **\--vqtl-mtd** to specify the method to test variance heterogeneity. 0 for Bartlett’s test, 1 for Levene’s test with mean, 2 for Levene’s test with median, 3 for Fligner-Killeen test. The default option is 0.
 
